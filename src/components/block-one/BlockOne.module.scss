@@ -1,0 +1,23 @@
+.blockOne {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  width: 400px;
+  height: 400px;
+  background-image: url('../../assets/images/test-img.jpg');
+  border: 5px solid black;
+}
+
+.button {
+  width: 200px;
+  height: 70px;
+}
+
+.redBorder {
+  border: 5px solid red;
+}
+
+.blackBorder {
+  border: 5px solid black;
+}

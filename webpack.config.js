@@ -12,7 +12,7 @@ const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const config = {
   mode: 'development',
   entry: {
-    main: path.resolve(__dirname, './src/js/index.js'),
+    main: path.resolve(__dirname, './src/index.jsx'),
   },
   output: {
     path: path.resolve(__dirname, './dist'),

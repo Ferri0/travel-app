@@ -77,5 +77,10 @@
     "*.css": "stylelint",
     "*.scss": "stylelint --syntax=scss",
     "*.{js,jsx,ts,tsx,md,html,css,scss}": "prettier --write"
+  },
+  "dependencies": {
+    "prop-types": "^15.7.2",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
   }
 }
