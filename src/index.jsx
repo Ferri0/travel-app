@@ -9,7 +9,7 @@ import { store } from './store';
 import { App } from './components/app/App';
 import { ErroBaundry } from './components/error-baundry';
 import {ShowplaceService} from './services';
-import { ShowplacesServiceProvider } from './showplaces-service-provider';
+import { ShowplacesServiceProvider } from './components/showplace-service-context';
 
 const showplacesService = new ShowplaceService();
 

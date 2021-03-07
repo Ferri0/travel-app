@@ -3,11 +3,13 @@ import Element from '../block-one';
 import ShowplaceService from '../../services';
 
 function App() {
-  const showplacesService = new ShowplaceService();
   const [data, setData] = useState([]);
+
   useEffect(() => {
+    const showplacesService = new ShowplaceService();
     showplacesService.getCountry('italy').then((res) => setData(res))
   }, []);
+
   return (
     <div>
       <Element data={data} />
@@ -15,4 +17,4 @@ function App() {
   )
 }
 
-export default App;
+export { App };
