@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Element from '../block-one';
-import ShowplaceService from '../../services';
+import {ShowplaceService} from '../../services';
 
 function App() {
   const [data, setData] = useState([]);

@@ -1,4 +1,6 @@
-import ShowplaceService from './showplaces-service';
+import {
+  ShowplaceService
+} from './showplaces-service';
 
 export {
   ShowplaceService

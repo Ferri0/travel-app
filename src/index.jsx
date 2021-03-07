@@ -7,22 +7,22 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { store } from './store';
 
 import { App } from './components/app/App';
-import { ErroBoundry } from './components/error-boundry';
-import { ShowplaceService } from './services';
-import { ShowplacesServiceProvider } from './components/showplace-service-context';
+import { ErrorBoundry } from './components/error-boundry';
+import { ShowplaceService } from './services/showplaces-service';
+import { ShowplaceServiceProvider } from './components/showplace-service-context';
 
-const showplacesService = new ShowplaceService();
+const showplaceService = new ShowplaceService();
 
 ReactDOM.render(
   <StrictMode>
     <Provider store={store}>
-      <ErroBoundry>
-        <ShowplacesServiceProvider value={showplacesService}>
+      <ErrorBoundry>
+        <ShowplaceServiceProvider value={showplaceService}>
           <Router>
             <App />
           </Router>
-        </ShowplacesServiceProvider>
-      </ErroBoundry>
+        </ShowplaceServiceProvider>
+      </ErrorBoundry>
     </Provider>
   </StrictMode>,
   document.getElementById('root')
