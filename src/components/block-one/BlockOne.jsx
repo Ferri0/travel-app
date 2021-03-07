@@ -1,38 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import s from './BlockOne.module.scss';
+import './BlockOne.module.scss';
 
-export default class BlockOne extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { borderColor: 'red' };
-    this.handleClick = this.handleClick.bind(this);
+const Element =  ({data}) => {
+  if (!data) {
+    return <div>loading</div>
   }
 
-  handleClick(e) {
-    const { borderColor } = this.state;
-    e.target.classList.toggle(s.redBorder);
-    if (borderColor === 'red') {
-      this.setState({ borderColor: 'black' });
-    } else {
-      this.setState({ borderColor: 'red' });
-    }
-  }
-
-  render() {
-    const { childElem } = this.props;
-    const { borderColor } = this.state;
-    return (
-      <div className={[s.blockOne, s[`${borderColor}Border`]].join(' ')}>
-        {childElem}
-        <button type="button" className={s.button} onClick={this.handleClick}>
-          change border!
-        </button>
-      </div>
-    );
-  }
-}
-
-BlockOne.propTypes = {
-  childElem: PropTypes.element.isRequired,
+  return (
+    <div className="block-two">
+      {
+        data.map(({img, title, description, id}) => {
+          const res = (
+            <div key={id}>
+              <div className="block-two__text">{title}</div>
+              <img className="img" src={img} alt="img"/>
+              <div>{description}</div>
+            </div>
+          )
+          return res
+        })
+      }
+    </div>
+  );
 };
+
+Element.propTypes = {
+  data: PropTypes.arrayOf().isRequired,
+};
+
+export default Element;
