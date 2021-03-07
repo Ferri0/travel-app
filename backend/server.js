@@ -1,6 +1,6 @@
 const path = require('path');
 const express = require('express');
-const countries = require('./countries/data-of-countries');
+const countries = require('./data-of-countries/data-of-countries');
 
 const app = express();
 app.use(express.static(path.join(__dirname, '../dist')));
