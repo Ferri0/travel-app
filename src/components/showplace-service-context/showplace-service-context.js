@@ -1,11 +1,7 @@
 import React from 'react'
 
-const {
-  Provider: ShowplaceServiceProvider,
-  Consumer: ShowplaceServiceConsumer
-} = React.createContext();
+const Context = React.createContext();
 
 export {
-  ShowplaceServiceProvider,
-  ShowplaceServiceConsumer
+  Context,
 };

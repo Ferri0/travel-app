@@ -1,13 +1,9 @@
-const reducer = (state, action) => {
-  switch (action.type) {
-    case 'SOMETHING':
-      return {
-        ...state
-      }
+import {
+  showplacesList
+} from "./showplacesList";
 
-      default:
-        return state;
-  }
-}
+const reducer = (state, action) => ({
+  showplacesList: showplacesList(state, action)
+})
 
 export default reducer;

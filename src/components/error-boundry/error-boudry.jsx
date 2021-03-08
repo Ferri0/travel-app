@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types'
-import ErrorIndicator from '../error-indicator';
+import { ErrorIndicator } from '../error-indicator';
 
 class ErrorBoundry extends Component {
   state = {
@@ -24,11 +24,11 @@ class ErrorBoundry extends Component {
 }
 
 ErrorBoundry.propTypes = {
-  children: PropTypes.objectOf()
+  children: PropTypes.node
 }
 
 ErrorBoundry.defaultProps = {
-  children: null
+  children: PropTypes.null
 };
 
 export { ErrorBoundry };

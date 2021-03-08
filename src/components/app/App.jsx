@@ -1,20 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import {ShowplaceService} from '../../services';
-import Element from '../block-one';
-import { Spinner } from "../spinner";
+import React from 'react';
+import ContainerElement from '../containers/block-one-container';
 
 function App() {
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    const showplacesService = new ShowplaceService();
-    showplacesService.getCountry('italy').then((res) => setData(res))
-  }, []);
-
   return (
     <div>
-      <Element data={data} />
-      <Spinner />
+      <ContainerElement />
     </div>
   )
 }

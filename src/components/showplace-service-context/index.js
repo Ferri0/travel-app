@@ -1,9 +1,7 @@
 import {
-  ShowplaceServiceProvider,
-  ShowplaceServiceConsumer
+  Context
 } from "./showplace-service-context";
 
 export {
-  ShowplaceServiceProvider,
-  ShowplaceServiceConsumer
+  Context
 };

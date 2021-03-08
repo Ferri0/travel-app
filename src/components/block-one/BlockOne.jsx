@@ -1,16 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import style from './BlockOne.module.scss';
 
-const Element =  ({data}) => {
-  if (!data) {
-    return <div>loading</div>
-  }
-
+const Element =  (props) => {
+  const { showplaces } = props;
   return (
     <div className={style.blockOne}>
       {
-        data.map(({img, title, description, id}) => {
+        showplaces.map(({img, title, description, id}) => {
           const res = (
             <div key={id}>
               <div className="block-two__text">{title}</div>
@@ -26,7 +24,11 @@ const Element =  ({data}) => {
 };
 
 Element.propTypes = {
-  data: PropTypes.arrayOf().isRequired,
+  showplaces: PropTypes.arrayOf(PropTypes.object)
 };
 
-export default Element;
+Element.defaultProps = {
+  showplaces: PropTypes.array
+};
+
+export { Element };

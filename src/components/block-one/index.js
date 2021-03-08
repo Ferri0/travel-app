@@ -1,3 +1,7 @@
-import BlockOne from './BlockOne';
+import {
+  Element
+} from './BlockOne';
 
-export default BlockOne;
+export {
+  Element
+};
