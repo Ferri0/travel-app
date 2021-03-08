@@ -1,0 +1,11 @@
+@import '../../../scss/abstracts.scss';
+
+.wrapper {
+  overflow-y: auto;
+  @include size(100vw, calc(100vh - 80px));
+}
+
+.card {
+  margin-right: 10px;
+  text-transform: uppercase;
+}
