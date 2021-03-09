@@ -2,6 +2,7 @@ const path = require('path');
 const express = require('express');
 const mongoose = require('mongoose');
 const countries = require('./countries/data-of-countries');
+const Country = require('./countries/countries.schema');
 
 const mongoURL = 'mongodb+srv://IgorAleks88:Veremiy1988@cluster0.abmvg.mongodb.net/app?retryWrites=true&w=majority';
 
@@ -24,22 +25,32 @@ app.get('/api/countries/italy', (req, res) => {
 
 const PORT = process.env.PORT || 3000;
 
-async function start() {
-  try {
-    await mongoose.connect(mongoURL, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useCreateIndex: true
-    })
-    // console.log('ololo');
-    app.listen(PORT);
-  } 
-  catch (e) {
-    console.log(e);
-  }
-}
+// async function start() {
+//   try {
+//     await mongoose.connect(mongoURL, {
+//       useNewUrlParser: true,
+//       useUnifiedTopology: true,
+//       useCreateIndex: true
+//     })
+//     app.listen(PORT);
+//     const country = await Country.findOne();
+//     console.log(country);    
+//   } 
+//   catch (e) {
+//     console.log(e);
+//   }
+// }
 
-start();
+// start();
 
 // app.listen(PORT);
+
+mongoose.connect(mongoURL, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        useCreateIndex: true
+      }).then(() => {
+        app.listen(PORT);
+       console.log(Country);
+      })
 
