@@ -1,6 +1,9 @@
 const path = require('path');
 const express = require('express');
+const mongoose = require('mongoose');
 const countries = require('./countries/data-of-countries');
+
+const mongoURL = 'mongodb+srv://IgorAleks88:Veremiy1988@cluster0.abmvg.mongodb.net/app?retryWrites=true&w=majority';
 
 const app = express();
 app.use(express.static(path.join(__dirname, '../dist')));
@@ -20,4 +23,23 @@ app.get('/api/countries/italy', (req, res) => {
 });
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT);
+
+async function start() {
+  try {
+    await mongoose.connect(mongoURL, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useCreateIndex: true
+    })
+    // console.log('ololo');
+    app.listen(PORT);
+  } 
+  catch (e) {
+    console.log(e);
+  }
+}
+
+start();
+
+// app.listen(PORT);
+
