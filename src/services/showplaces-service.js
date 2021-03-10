@@ -25,4 +25,6 @@ class ShowplaceService {
   }
 }
 
-export default ShowplaceService;
+export {
+  ShowplaceService
+};
