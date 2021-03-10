@@ -1,0 +1,8 @@
+@import '../../scss/abstracts.scss';
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  background: rgb(16, 233, 124);
+  @include size(100vw, 30px);
+}

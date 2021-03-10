@@ -1,0 +1,12 @@
+@import '../../scss/abstracts.scss';
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  background: rgb(16, 233, 124);
+  @include size(100vw, 50px);
+}
+
+.searchInput {
+  @include size(auto, 20px);
+}
