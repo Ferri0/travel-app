@@ -2,8 +2,7 @@ import React, { StrictMode } from 'react';
 import ReactDOM from 'react-dom';
 import './scss/base/normalize.scss';
 import './scss/base/base.scss';
-import { Provider } from "react-redux";
-import { HashRouter as Router } from "react-router-dom";
+import { Provider } from 'react-redux';
 import { store } from './store';
 
 import { App } from './components/app/App';
@@ -18,9 +17,7 @@ ReactDOM.render(
     <Provider store={store}>
       <ErrorBoundry>
         <Context.Provider value={showplaceService}>
-          <Router>
-            <App />
-          </Router>
+          <App />
         </Context.Provider>
       </ErrorBoundry>
     </Provider>

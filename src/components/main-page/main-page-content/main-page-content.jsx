@@ -1,7 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import style from './main-page-content.module.scss';
-import ShowplaceService from '../../../services';
+import { Spinner } from '../../spinner';
+import { Context } from '../../showplace-service-context';
+import { fetchShowplace } from '../../../action';
+import { ErrorIndicator } from '../../error-indicator';
 
 function getCountry(data) {
   return data.map((item) =>
@@ -12,6 +17,7 @@ function getCountry(data) {
         to={{
           pathname: '/country',
           propsCountry: country,
+          propsAttractions: item[country],
         }}
       >
         {country}
@@ -20,14 +26,43 @@ function getCountry(data) {
   );
 }
 
-function MainPageContent() {
-  const showplacesService = new ShowplaceService();
-  const [data, setData] = useState([]);
+function MainPageContent(props) {
+  const showplaceService = useContext(Context);
+  const { showplaces, loading, error, fetchShowplaces } = props;
   useEffect(() => {
-    showplacesService.getAllCountries().then((res) => setData(res));
-  }, []);
+    fetchShowplaces(showplaceService);
+  }, [showplaceService, fetchShowplaces]);
 
-  return <div className={style.wrapper}>{getCountry(data)}</div>;
+  if (loading) {
+    return <Spinner />;
+  }
+
+  if (error) {
+    return <ErrorIndicator />;
+  }
+
+  return <div className={style.wrapper}>{getCountry(showplaces)}</div>;
 }
 
-export default MainPageContent;
+MainPageContent.propTypes = {
+  showplaces: PropTypes.arrayOf(PropTypes.object),
+  fetchShowplaces: PropTypes.func,
+  loading: PropTypes.bool.isRequired,
+  error: PropTypes.bool,
+};
+
+MainPageContent.defaultProps = {
+  showplaces: PropTypes.objectOf(),
+  fetchShowplaces: PropTypes.func,
+  error: PropTypes.array,
+};
+
+const mapStateToProps = ({
+  showplacesList: { showplaces, error, loading },
+}) => ({ showplaces, loading, error });
+
+const mapDispatchToProps = (dispatch) => ({
+  fetchShowplaces: fetchShowplace(dispatch),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(MainPageContent);

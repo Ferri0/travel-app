@@ -1,25 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import style from './country-page-content.module.scss';
-import ShowplaceService from '../../../services';
-import Element from '../../block-one';
+import { Element } from '../../block-one';
 
 function CountryPageContent() {
   const location = useLocation();
   const country = location.propsCountry;
-
-  const showplacesService = new ShowplaceService();
-  const [data, setData] = useState([]);
-  useEffect(() => {
-    showplacesService.getCountry(country).then((res) => setData(res));
-  }, []);
+  const attractions = location.propsAttractions;
 
   return (
     <div className={style.wrapper}>
       <Link to="/">Back to Main Page</Link>
-      <div>{country}</div>
+      <div className={style.countryTitle}>{country}</div>
       <div>
-        <Element data={data} />
+        <Element showplaces={attractions} />
       </div>
     </div>
   );
