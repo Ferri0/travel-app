@@ -1,10 +1,11 @@
 const path = require('path');
 const express = require('express');
 const mongoose = require('mongoose');
-const countries = require('./countries/data-of-countries');
+// const countries = require('./countries/data-of-countries');
+let countries =[];
 const Country = require('./countries/countries.schema');
 
-const mongoURL = 'mongodb+srv://IgorAleks88:Veremiy1988@cluster0.abmvg.mongodb.net/app?retryWrites=true&w=majority';
+const mongoURL = 'mongodb+srv://IgorAleks88:Veremiy1988@cluster0.abmvg.mongodb.net/travel-app?retryWrites=true&w=majority';
 
 const app = express();
 app.use(express.static(path.join(__dirname, '../dist')));
@@ -51,6 +52,7 @@ mongoose.connect(mongoURL, {
         useCreateIndex: true
       }).then(() => {
         app.listen(PORT);
-       console.log(Country);
+        Country.find({}).then(res => {countries = res});
+       console.log(countries);
       })
 

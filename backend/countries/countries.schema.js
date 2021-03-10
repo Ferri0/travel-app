@@ -2,7 +2,6 @@ const { Schema, model } = require('mongoose');
 
 const countrySchema = new Schema(
     {   
-        _id: false,
         name: String,
         name_lang:{
         en:String,
@@ -39,6 +38,6 @@ const countrySchema = new Schema(
     }
 );
 
-const Country = model('Country', countrySchema);
+const Country = model('countries', countrySchema);
 
 module.exports = Country;
