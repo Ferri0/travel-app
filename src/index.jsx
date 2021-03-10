@@ -1,10 +1,29 @@
-import React from 'react';
+import React, { StrictMode } from 'react';
 import ReactDOM from 'react-dom';
 import './scss/base/normalize.scss';
 import './scss/base/base.scss';
-import App from './components/app/App'
+import { Provider } from "react-redux";
+import { HashRouter as Router } from "react-router-dom";
+import { store } from './store';
+
+import { App } from './components/app/App';
+import { ErrorBoundry } from './components/error-boundry';
+import { ShowplaceService } from './services/showplaces-service';
+import { Context } from './components/showplace-service-context';
+
+const showplaceService = new ShowplaceService();
 
 ReactDOM.render(
-  <App />,
+  <StrictMode>
+    <Provider store={store}>
+      <ErrorBoundry>
+        <Context.Provider value={showplaceService}>
+          <Router>
+            <App />
+          </Router>
+        </Context.Provider>
+      </ErrorBoundry>
+    </Provider>
+  </StrictMode>,
   document.getElementById('root')
 );
