@@ -10,12 +10,13 @@ const Element =  ({data}) => {
   return (
     <div className="block-two">
       {
-        data.map(({img, title, description, id}) => {
+        data.map(({img, name, capital, description}) => {
           const res = (
             <div key={id}>
-              <div className="block-two__text">{title}</div>
+              <div className="block-two__text">{name}</div>
+              <div className="block-two__text">{capital.ru}</div>
               <img className="img" src={img} alt="img"/>
-              <div>{description}</div>
+              <div>{description.ru}</div>
             </div>
           )
           return res

@@ -6,11 +6,14 @@ function App() {
   const showplacesService = new ShowplaceService();
   const [data, setData] = useState([]);
   useEffect(() => {
-    showplacesService.getCountry('italy').then((res) => setData(res))
+    //showplacesService.getCountry('italy').then((res) => setData(res))
+    showplacesService.getAllCountries.then((res) => setData(res))
+    // setData(showplacesService.getCountry('italy'));
   }, []);
   return (
     <div>
-      <Element data={data} />
+      {/* <Element data={data} /> */}
+      {data[0].name}
     </div>
   )
 }

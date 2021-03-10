@@ -1,12 +1,15 @@
 const path = require('path');
 const express = require('express');
 const mongoose = require('mongoose');
-const countries = require('./countries/data-of-countries');
+// const countries = require('./countries/data-of-countries');
+const Country = require('./countries/country.schema');
 
-const mongoURL = 'mongodb+srv://IgorAleks88:Veremiy1988@cluster0.abmvg.mongodb.net/app?retryWrites=true&w=majority';
+const mongoURL = 'mongodb+srv://IgorAleks88:Veremiy1988@cluster0.abmvg.mongodb.net/travel-app?retryWrites=true&w=majority';
 
 const app = express();
 app.use(express.static(path.join(__dirname, '../dist')));
+
+let countries = [];
 
 app.get('/api/countries', (req, res) => {
   res.send(JSON.stringify(countries));
@@ -31,8 +34,14 @@ async function start() {
       useUnifiedTopology: true,
       useCreateIndex: true
     })
-    // console.log('ololo');
     app.listen(PORT);
+    Country.find({}).then(res => {
+      countries = res;
+      
+    }
+
+    )
+    
   } 
   catch (e) {
     console.log(e);
