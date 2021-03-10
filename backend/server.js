@@ -26,33 +26,16 @@ app.get('/api/countries/italy', (req, res) => {
 
 const PORT = process.env.PORT || 3000;
 
-// async function start() {
-//   try {
-//     await mongoose.connect(mongoURL, {
-//       useNewUrlParser: true,
-//       useUnifiedTopology: true,
-//       useCreateIndex: true
-//     })
-//     app.listen(PORT);
-//     const country = await Country.findOne();
-//     console.log(country);    
-//   } 
-//   catch (e) {
-//     console.log(e);
-//   }
-// }
-
-// start();
-
-// app.listen(PORT);
-
 mongoose.connect(mongoURL, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
         useCreateIndex: true
       }).then(() => {
         app.listen(PORT);
-        Country.find({}).then(res => {countries = res});
-       console.log(countries);
+        Country.find({}).then(res => {
+          countries = res;
+          // console.log(countries);
+        });
+       
       })
 

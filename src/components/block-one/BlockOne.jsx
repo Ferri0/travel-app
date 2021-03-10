@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import React from 'react';
 import PropTypes from 'prop-types';
 import './BlockOne.module.scss';
@@ -10,12 +11,12 @@ const Element =  ({data}) => {
   return (
     <div className="block-two">
       {
-        data.map(({img, title, description, id}) => {
+        data.map(({img, name, description, name_lang}) => {
           const res = (
-            <div key={id}>
-              <div className="block-two__text">{title}</div>
+            <div key={name}>
+              <div className="block-two__text">{name_lang.ru}</div>
               <img className="img" src={img} alt="img"/>
-              <div>{description}</div>
+              <div className="block-two__text">{description.ru}</div>
             </div>
           )
           return res
