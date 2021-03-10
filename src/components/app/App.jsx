@@ -1,18 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import Element from '../block-one';
-import ShowplaceService from '../../services';
+import React from 'react';
+import ContainerElement from '../containers/block-one-container';
 
 function App() {
-  const showplacesService = new ShowplaceService();
-  const [data, setData] = useState([]);
-  useEffect(() => {
-    showplacesService.getCountry('italy').then((res) => setData(res))
-  }, []);
   return (
     <div>
-      <Element data={data} />
+      <ContainerElement />
     </div>
   )
 }
 
-export default App;
+export { App };
