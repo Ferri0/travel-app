@@ -19,8 +19,9 @@ class ShowplaceService {
   };
 
   getCountry = async (country) => {
-    const res = await this.getResource(`${this.apiBase}/${country}`);
-    return res[country];
+    const data = await this.getResource(this.apiBase);
+    const res = data.find((item) => item.name === country)
+    return res;
   }
 }
 
