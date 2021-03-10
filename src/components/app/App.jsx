@@ -1,7 +1,6 @@
 import React from 'react';
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
-import MainPage from '../main-page';
-import CountryPage from '../country-page';
+import { MainPage, CountryPage } from '../pages';
 // import ContainerElement from '../containers/block-one-container';
 
 function App() {

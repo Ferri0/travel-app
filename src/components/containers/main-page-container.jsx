@@ -2,29 +2,12 @@ import React, { useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import style from './main-page-content.module.scss';
-import { Spinner } from '../../spinner';
-import { Context } from '../../showplace-service-context';
-import { fetchShowplace } from '../../../action';
-import { ErrorIndicator } from '../../error-indicator';
+import { Spinner } from '../spinner';
+import { Context } from '../showplace-service-context';
+import { fetchShowplace } from '../../action';
+import { ErrorIndicator } from '../error-indicator';
 
-// function getCountry(data) {
-//   return data.map((item) =>
-//     Object.keys(item).map((country) => (
-//       <Link
-//         key={`${country}-card`}
-//         className={style.card}
-//         to={{
-//           pathname: '/country',
-//           propsCountry: country,
-//           propsAttractions: item[country],
-//         }}
-//       >
-//         {country}
-//       </Link>
-//     ))
-//   );
-// }
+import style from './main-page-content.module.scss';
 
 function getCountry(data) {
   return data.map((item) =>
@@ -43,7 +26,7 @@ function getCountry(data) {
   
 }
 
-function MainPageContent(props) {
+function MainPageContainer(props) {
   const showplaceService = useContext(Context);
   const { showplaces, loading, error, fetchShowplaces } = props;
   useEffect(() => {
@@ -61,14 +44,14 @@ function MainPageContent(props) {
   return <div className={style.wrapper}>{getCountry(showplaces)}</div>;
 }
 
-MainPageContent.propTypes = {
+MainPageContainer.propTypes = {
   showplaces: PropTypes.arrayOf(PropTypes.object),
   fetchShowplaces: PropTypes.func,
   loading: PropTypes.bool.isRequired,
   error: PropTypes.bool,
 };
 
-MainPageContent.defaultProps = {
+MainPageContainer.defaultProps = {
   showplaces: PropTypes.objectOf(),
   fetchShowplaces: PropTypes.func,
   error: PropTypes.array,
@@ -82,4 +65,4 @@ const mapDispatchToProps = (dispatch) => ({
   fetchShowplaces: fetchShowplace(dispatch),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(MainPageContent);
+export default connect(mapStateToProps, mapDispatchToProps)(MainPageContainer);

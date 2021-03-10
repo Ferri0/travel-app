@@ -4,7 +4,7 @@ const showplacesList = (state, action) => {
       showplaces: [],
       loading: true,
       error: false,
-      lang: 'ru',
+      lang: 'en',
     };
   };
 
@@ -18,6 +18,7 @@ const showplacesList = (state, action) => {
 
     case 'FETCH_SHOWPLACE_SUCCESS': {
       return {
+        ...state.showplacesList,
         showplaces: action.payload,
         loading: false,
         error: false,
@@ -26,6 +27,7 @@ const showplacesList = (state, action) => {
 
     case 'FETCH_SHOWPLACE_FAILURE': {
       return {
+        ...state.showplacesList,
         showplaces: [],
         loading: false,
         error: action.payload
