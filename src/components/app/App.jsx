@@ -16,6 +16,7 @@ function App() {
         <Route path="/country">
           <CountryPage />
         </Route>
+        <Route render={() => <h2>Error, you made a mistake in the url path  </h2>} />
       </Switch>
       {/* <div>
         <ContainerElement />
