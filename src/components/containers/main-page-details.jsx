@@ -1,15 +1,16 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Spinner } from '../spinner';
 import { Context } from '../showplace-service-context';
 import { fetchShowplace } from '../../action';
-import { Element } from '../block-one';
 import { ErrorIndicator } from '../error-indicator';
+import { MainPageList } from '../main-page-list';
 
-const ContainerElement = (props) => {
+const MainPageDetails = (props) => {
   const showplaceService = useContext(Context);
-  const { showplaces, loading, error, fetchShowplaces } = props;
+  const { showplaces, loading, error, lang, fetchShowplaces } = props;
+
   useEffect(() => {
     fetchShowplaces(showplaceService);
   }, [showplaceService, fetchShowplaces]);
@@ -17,36 +18,46 @@ const ContainerElement = (props) => {
   if (loading) {
     return <Spinner />;
   }
-
+  
   if (error) {
     return <ErrorIndicator />;
   }
+  return (
+    <ul>
+        {
+      showplaces.map((showplace) => {
+        const {_id} = showplace;
+        return (
+          <li key={_id}>
+          <MainPageList lang={lang} showplace={showplace} />
+        </li>
+        )
+      })
+    }
+    </ul>
+  )
+}
 
-  const [cont1] = showplaces;
-  const { england } = cont1;
-
-  return <Element showplaces={england} />;
-};
-
-ContainerElement.propTypes = {
+MainPageDetails.propTypes = {
   showplaces: PropTypes.arrayOf(PropTypes.object),
   fetchShowplaces: PropTypes.func,
   loading: PropTypes.bool.isRequired,
   error: PropTypes.bool,
+  lang: PropTypes.string.isRequired
 };
 
-ContainerElement.defaultProps = {
+MainPageDetails.defaultProps = {
   showplaces: PropTypes.objectOf(),
   fetchShowplaces: PropTypes.func,
   error: PropTypes.array,
 };
 
 const mapStateToProps = ({
-  showplacesList: { showplaces, error, loading },
-}) => ({ showplaces, loading, error });
+  showplacesList: { showplaces, error, loading, lang },
+}) => ({ showplaces, loading, error, lang });
 
 const mapDispatchToProps = (dispatch) => ({
   fetchShowplaces: fetchShowplace(dispatch),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ContainerElement);
+export default connect(mapStateToProps, mapDispatchToProps)(MainPageDetails);

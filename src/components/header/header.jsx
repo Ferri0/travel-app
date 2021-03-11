@@ -6,7 +6,7 @@ function Header() {
     <div className={style.header}>
       Logo
       <input
-        type="text"
+        type="search"
         className={style.searchInput}
         placeholder="search country"
       />
