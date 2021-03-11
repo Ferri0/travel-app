@@ -1,9 +1,10 @@
 import {
   MainPage
-} from './main-page'
+} from './main-page';
+
 import {
   CountryPage
-} from "./country-page";
+} from './country-page';
 
 export {
   MainPage,

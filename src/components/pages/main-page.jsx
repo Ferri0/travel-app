@@ -1,13 +1,13 @@
 import React from 'react';
 import Header from '../header';
-import { MainPageContainer } from '../containers';
+import { MainPageDetails } from '../containers'
 import Footer from '../footer';
 
 function MainPage() {
   return (
     <div>
       <Header />
-      <MainPageContainer />
+        <MainPageDetails />
       <Footer />
     </div>
   );

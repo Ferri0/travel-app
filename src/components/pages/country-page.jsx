@@ -1,13 +1,13 @@
 import React from 'react';
 import Header from '../header';
-import { CountryPageContainer } from '../containers';
+import CountryPageDitails from '../containers/country-page-details'
 import Footer from '../footer';
 
 function CountryPage() {
   return (
     <div>
       <Header />
-      <CountryPageContainer />
+        <CountryPageDitails />
       <Footer />
     </div>
   );

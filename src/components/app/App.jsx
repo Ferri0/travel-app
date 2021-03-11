@@ -8,13 +8,12 @@ function App() {
     <Router>
       <Switch>
         {/* main page */}
-        <Route exact path="/">
-          <MainPage />
-        </Route>
+        <Route exact path="/" component={MainPage} />
         {/* country page */}
-        <Route path="/country">
-          <CountryPage />
-        </Route>
+        {/* <Route path="/:id" children={CountryPage} /> */}
+        <Route exact path="/:country" 
+          component={CountryPage}
+        />
         <Route render={() => <h2>Error, you made a mistake in the url path  </h2>} />
       </Switch>
       {/* <div>

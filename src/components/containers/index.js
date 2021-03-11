@@ -1,7 +1,7 @@
-import MainPageContainer from './main-page-container';
-import CountryPageContainer from './country-page-container';
+import MainPageDetails from './main-page-details';
+import CountryPageDitails from './country-page-details';
 
 export {
-  MainPageContainer,
-  CountryPageContainer
+  MainPageDetails,
+  CountryPageDitails
 };

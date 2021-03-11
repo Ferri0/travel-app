@@ -17,3 +17,12 @@
   font-weight: 600;
   text-transform: uppercase;
 }
+
+.countri__title {
+  text-align: center;
+}
+
+.country__list {
+  display: flex;
+  flex-direction: column;
+}
