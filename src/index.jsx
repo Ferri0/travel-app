@@ -5,7 +5,7 @@ import './scss/base/base.scss';
 import { Provider } from 'react-redux';
 import { store } from './store';
 
-import { App } from './components/app/App';
+import { App } from './components/app';
 import { ErrorBoundry } from './components/error-boundry';
 import { ShowplaceService } from './services/showplaces-service';
 import { Context } from './components/showplace-service-context';
