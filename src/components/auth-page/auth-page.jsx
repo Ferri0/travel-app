@@ -1,16 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { setShowAuth } from '../../action';
 import style from './auth-page.module.scss';
 
 const headerText = {
     ru: "Введите имя пользователя и пароль",
     en: "Enter user name and password",
-    ua: "Введіть ім\'я користувача та пароль"
+    ua: "Введіть ім'я користувача та пароль"
 }
 const nameText = {
     ru: "Имя:",
     en: "Name:",
-    ua: "Ім\'я:"
+    ua: "Ім'я:"
 }
 const passwordText = {
     ru: "Пароль:",
@@ -33,23 +35,34 @@ const closeText = {
     ua: "Закрити"
 }
 function AuthPage(props) {
-    const { lang } = props;
+    const { lang, isShowAuth, setShowAuthAction } = props;
     return (
-      <div className={style.authPageWrapper}>
+      <div className={isShowAuth ? style.authPageWrapper : style.authPageWrapperHidden}>
             <span className = {style.authPageHeader}>{ headerText[lang] }</span>
             <span className = {style.authPageText}>{ nameText[lang] }</span>
             <input  className={style.authPageInput} />
             <span className = {style.authPageText}>{ passwordText[lang] }</span>
             <input  className={style.authPageInput} />
-            <button  className={style.authPageButton}>{ loginText[lang] }</button>
-            <button  className={style.authPageButton}>{ registerText[lang] }</button>
-            <button  className={style.authPageButton}>{ closeText[lang] }</button>
+            <button  type="button" className={style.authPageButton}>{ loginText[lang] }</button>
+            <button  type="button" className={style.authPageButton}>{ registerText[lang] }</button>
+            <button  type="button" className={style.authPageButton}
+            onClick = {() => setShowAuthAction(false)}>{ closeText[lang] }</button>
       </div>
     );
   }
   
   const mapStateToProps = ({
-    showplacesList: { lang },
-  }) => ({ lang });
+    showplacesList: { lang, isShowAuth },
+  }) => ({ lang, isShowAuth });
 
-  export default connect(mapStateToProps)(AuthPage);
+  const mapDispatchToProps = (dispatch) => ({
+    setShowAuthAction: (value) => dispatch(setShowAuth(value)), // [1]
+    });
+
+  export default connect(mapStateToProps, mapDispatchToProps)(AuthPage);
+
+  AuthPage.propTypes = {
+    setShowAuthAction: PropTypes.func.isRequired,
+    isShowAuth: PropTypes.bool.isRequired,
+    lang: PropTypes.string.isRequired
+  }

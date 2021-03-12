@@ -5,6 +5,7 @@ const showplacesList = (state, action) => {
       loading: true,
       error: false,
       lang: 'ua',
+      isShowAuth: true
     };
   };
 
@@ -31,6 +32,13 @@ const showplacesList = (state, action) => {
         showplaces: [],
         loading: false,
         error: action.payload
+      }
+    }
+
+    case 'SET_SHOW_AUTH': {
+      return {
+        ...state.showplacesList,
+        isShowAuth: action.payload
       }
     }
 

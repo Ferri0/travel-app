@@ -1,20 +1,27 @@
 @import '../../scss/abstracts.scss';
 
 .authPageWrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     position: absolute;
     top: 50vh;
     left: 50vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 20vh;
+    min-width: 250px;
     height: 25vh;
+    min-height: 250px;
     background-color: #f00;
+    transform: translate(-50%, -50%);
+}
+
+.authPageWrapperHidden{
+    visibility:hidden;
 }
 
 .authPageHeader {
-    font-size: 20px;
     color: #00f;
+    font-size: 20px;
 }
 
 .authPageInput{
@@ -28,6 +35,6 @@
 }
 
 .authPageText{
-    font-size: 14px;
     color: #00f;
+    font-size: 14px;
 }
