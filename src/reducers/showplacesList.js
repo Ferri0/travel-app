@@ -4,7 +4,7 @@ const showplacesList = (state, action) => {
       showplaces: [],
       loading: true,
       error: false,
-      lang: 'ru',
+      lang: 'ua',
     };
   };
 
