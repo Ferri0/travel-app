@@ -1,3 +1,7 @@
-import ShowplaceService from './showplaces-service';
+import {
+  ShowplaceService
+} from './showplaces-service';
 
-export default ShowplaceService;
+export {
+  ShowplaceService
+};

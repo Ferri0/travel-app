@@ -1,21 +1,27 @@
-import React, { useEffect, useState } from 'react';
-import Element from '../block-one';
-import ShowplaceService from '../../services';
+import React from 'react';
+import { HashRouter as Router, Route, Switch } from 'react-router-dom';
+import MainPage from '../main-page';
+import CountryPage from '../country-page';
+// import ContainerElement from '../containers/block-one-container';
 
 function App() {
-  const showplacesService = new ShowplaceService();
-  const [data, setData] = useState([]);
-  useEffect(() => {
-    //showplacesService.getCountry('italy').then((res) => setData(res))
-    showplacesService.getAllCountries.then((res) => setData(res))
-    // setData(showplacesService.getCountry('italy'));
-  }, []);
   return (
-    <div>
-      {/* <Element data={data} /> */}
-      {data[0].name}
-    </div>
-  )
+    <Router>
+      <Switch>
+        {/* main page */}
+        <Route exact path="/">
+          <MainPage />
+        </Route>
+        {/* country page */}
+        <Route path="/country">
+          <CountryPage />
+        </Route>
+      </Switch>
+      {/* <div>
+        <ContainerElement />
+      </div> */}
+    </Router>
+  );
 }
 
-export default App;
+export { App };

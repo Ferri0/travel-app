@@ -1,21 +1,18 @@
+/* eslint-disable camelcase */
 import React from 'react';
 import PropTypes from 'prop-types';
-import './BlockOne.module.scss';
+import style from './BlockOne.module.scss';
 
-const Element =  ({data}) => {
-  if (!data) {
-    return <div>loading</div>
-  }
-
+const Element =  (props) => {
+  const { showplaces } = props;
   return (
-    <div className="block-two">
+    <div className={style.blockOne}>
       {
-        data.map(({img, name, capital, description}) => {
+        showplaces.map(({img, name, description, id}) => {
           const res = (
             <div key={id}>
-              <div className="block-two__text">{name}</div>
-              <div className="block-two__text">{capital.ru}</div>
-              <img className="img" src={img} alt="img"/>
+              <div className="block-two__text">{name.ru}</div>
+              <img className={style.img} src={img} alt="img"/>
               <div>{description.ru}</div>
             </div>
           )
@@ -27,7 +24,11 @@ const Element =  ({data}) => {
 };
 
 Element.propTypes = {
-  data: PropTypes.arrayOf().isRequired,
+  showplaces: PropTypes.arrayOf(PropTypes.object)
 };
 
-export default Element;
+Element.defaultProps = {
+  showplaces: PropTypes.array
+};
+
+export { Element };
