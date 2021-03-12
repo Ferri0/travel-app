@@ -27,7 +27,13 @@ const setShowAuth = (value) => ({
     payload: value
 });
 
+const setAuthorized = (value) => ({
+  type: 'SET_AUTHORIZED',
+  payload: value
+});
+
 export {
   fetchShowplace,
-  setShowAuth
+  setShowAuth,
+  setAuthorized
 };

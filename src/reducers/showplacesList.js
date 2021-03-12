@@ -5,7 +5,8 @@ const showplacesList = (state, action) => {
       loading: true,
       error: false,
       lang: 'ua',
-      isShowAuth: true
+      isShowAuth: false,
+      isAuthorized: false
     };
   };
 
@@ -39,6 +40,13 @@ const showplacesList = (state, action) => {
       return {
         ...state.showplacesList,
         isShowAuth: action.payload
+      }
+    }
+
+    case 'SET_AUTHORIZED': {
+      return {
+        ...state.showplacesList,
+        isAuthorized: action.payload
       }
     }
 
