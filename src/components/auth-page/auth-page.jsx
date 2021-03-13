@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { setShowAuth } from '../../action';
+import { setShowAuth, setAuthorized, setCurrentUser } from '../../action';
 import {ShowplaceService} from '../../services';
 import style from './auth-page.module.scss';
 
@@ -37,20 +37,60 @@ const closeText = {
     en: "Close",
     ua: "Закрити"
 }
+const errorText = {
+  ok:{
+    en:'',
+    ru:'',
+    ua:''
+  },
+  wrongUser:{
+    en:'User not found',
+    ru:'Пользователь не найден',
+    ua:'Користувача не знайдено'
+  },
+  wrongPassword:{
+    en:'Wrong password',
+    ru:'Неправильный пароль',
+    ua:'Неправильний пароль'
+  },
+  error:{
+    en:'Something went wrong',
+    ru:'Что-то пошло не так',
+    ua:'Щось пішло не так'
+  }
+}
+
+
+
 function AuthPage(props) {
-    const { lang, isShowAuth, setShowAuthAction } = props;
+    const { lang, isShowAuth, setShowAuthAction, setAuthorizedAction, setCurrentUserAction } = props;
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState(''); 
+    const [errorType, setErrorType] = useState('ok');
+
+    function loginHandler(user, pass) {
+      showplaceService.login(user, pass).then(res => {
+        if (res === 'ok') {
+          setCurrentUserAction(user);
+          setAuthorizedAction(true);
+          setShowAuthAction(false)
+        } 
+        setErrorType(res);
+      });
+      
+    }
+
     return (
       <div className={isShowAuth ? style.authPageWrapper : style.authPageWrapperHidden}>
             <span className = {style.authPageHeader}>{ headerText[lang] }</span>
+            <span className = {style.authPageError}>{ errorText[errorType][lang] }</span>
             <span className = {style.authPageText}>{ nameText[lang] }</span>
             <input  className={style.authPageInput} onChange = {event => setUsername(event.target.value)}/>
             <span className = {style.authPageText}>{ passwordText[lang] }</span>
             <input  className={style.authPageInput} onChange = {event => setPassword(event.target.value)}/>
             <button  type="button" className={style.authPageButton}
             onClick = {() => {
-                showplaceService.login(username, password).then(res => console.log(res))
+              loginHandler(username, password);
               }}>{ loginText[lang] }</button>
             <button  type="button" className={style.authPageButton}>{ registerText[lang] }</button>
             <button  type="button" className={style.authPageButton}
@@ -60,11 +100,13 @@ function AuthPage(props) {
   }
   
   const mapStateToProps = ({
-    showplacesList: { lang, isShowAuth },
-  }) => ({ lang, isShowAuth });
+    showplacesList: { lang, isShowAuth, isAuthorized, currentUser },
+  }) => ({ lang, isShowAuth, isAuthorized, currentUser });
 
   const mapDispatchToProps = (dispatch) => ({
     setShowAuthAction: (value) => dispatch(setShowAuth(value)), // [1]
+    setAuthorizedAction: (value) => dispatch(setAuthorized(value)),
+    setCurrentUserAction: (value) => dispatch(setCurrentUser(value))
     });
 
   export default connect(mapStateToProps, mapDispatchToProps)(AuthPage);

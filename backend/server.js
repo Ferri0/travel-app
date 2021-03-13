@@ -20,12 +20,12 @@ app.get('/api/countries', (req, res) => {
 app.post('/api/login', async (req, res) => {
   const userArray = await Users.find({});
   const currentUser = userArray.find((user) => user.name === req.body.name);
-  let result = "Такого юзера нет"
+  let result = "wrongUser"
   if (currentUser) {
     if (currentUser.pass !== req.body.pass) {
-      result = "Неверный пароль"
+      result = "wrongPassword"
     } else {
-    result = "Вы вошли";
+    result = "ok";
     }
   }
   res.send(result);

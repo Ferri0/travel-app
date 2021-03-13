@@ -26,9 +26,11 @@ class ShowplaceService {
 
   login = async (name, pass) => {
     const data = {name, pass}
-    console.log(data);
+    let result = 'error';
     const response = await fetch('api/login', {method: 'POST', headers: {'Content-Type': 'application/json'},body:JSON.stringify(data)});
-    const result = await response.text();
+    if (response.ok) {
+     result = await response.text();
+    }
     return result;
   }
 }

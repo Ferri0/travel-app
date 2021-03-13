@@ -32,8 +32,14 @@ const setAuthorized = (value) => ({
   payload: value
 });
 
+const setCurrentUser = (value) => ({
+  type: 'SET_CURRENT_USER',
+  payload: value
+});
+
 export {
   fetchShowplace,
   setShowAuth,
-  setAuthorized
+  setAuthorized,
+  setCurrentUser
 };

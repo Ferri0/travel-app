@@ -6,7 +6,8 @@ const showplacesList = (state, action) => {
       error: false,
       lang: 'ua',
       isShowAuth: false,
-      isAuthorized: false
+      isAuthorized: false,
+      currentUser: null
     };
   };
 
@@ -47,6 +48,13 @@ const showplacesList = (state, action) => {
       return {
         ...state.showplacesList,
         isAuthorized: action.payload
+      }
+    }
+
+    case 'SET_CURRENT_USER': {
+      return {
+        ...state.showplacesList,
+        currentUser: action.payload
       }
     }
 
