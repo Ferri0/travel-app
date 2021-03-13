@@ -10,6 +10,8 @@ import { ErrorBoundry } from './components/error-boundry';
 import { ShowplaceService } from './services/showplaces-service';
 import { Context } from './components/showplace-service-context';
 
+import './scss/owfont-regular.min.scss';
+
 const showplaceService = new ShowplaceService();
 
 ReactDOM.render(
