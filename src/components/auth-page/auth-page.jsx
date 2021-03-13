@@ -57,6 +57,11 @@ const errorText = {
     en:'Something went wrong',
     ru:'Что-то пошло не так',
     ua:'Щось пішло не так'
+  },
+  userExists:{
+    en:'User exists',
+    ru:'Пользователь уже существует',
+    ua:'Користувач вже існує'
   }
 }
 
@@ -77,7 +82,17 @@ function AuthPage(props) {
         } 
         setErrorType(res);
       });
-      
+    }
+
+    function registerHandler(user, pass) {
+      showplaceService.register(user, pass).then(res => {
+        if (res === 'ok') {
+          setCurrentUserAction(user);
+          setAuthorizedAction(true);
+          setShowAuthAction(false)
+        } 
+        setErrorType(res);
+      });
     }
 
     return (
@@ -92,7 +107,10 @@ function AuthPage(props) {
             onClick = {() => {
               loginHandler(username, password);
               }}>{ loginText[lang] }</button>
-            <button  type="button" className={style.authPageButton}>{ registerText[lang] }</button>
+            <button  type="button" className={style.authPageButton}
+            onClick = {() => {
+              registerHandler(username, password);
+              }}>{ registerText[lang] }</button>
             <button  type="button" className={style.authPageButton}
             onClick = {() => setShowAuthAction(false)}>{ closeText[lang] }</button>
       </div>

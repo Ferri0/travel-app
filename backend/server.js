@@ -31,6 +31,18 @@ app.post('/api/login', async (req, res) => {
   res.send(result);
 });
 
+app.post('/api/register', async (req, res) => {
+  const userArray = await Users.find({});
+  const currentUser = userArray.find((user) => user.name === req.body.name);
+  let result = "ok"
+  if (currentUser) {
+    result = "userExists"   
+  } else {
+    Users.create({name:req.body.name, pass: req.body.pass});
+  }
+  res.send(result);
+});
+
 const PORT = process.env.PORT || 3000;
 
 mongoose.connect(mongoURL, {
