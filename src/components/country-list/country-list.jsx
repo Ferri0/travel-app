@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { WeatherWidget } from '../weather-widget'
+import { Widgets } from '../widgets'
 
 import './country-list.scss'
 
@@ -11,7 +11,7 @@ const CountryList = ({currentCounrty, lang}) => {
     <div>
       <h2 className="countri__title">{ title[lang] }</h2>
       <img className="country__img" src={catipalImg} alt="capital-img"/>
-      <WeatherWidget />
+      <Widgets />
       <ul className="countri__list">
         {
           attraction.map(({ name, img, description, id}) => (

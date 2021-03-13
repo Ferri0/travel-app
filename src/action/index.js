@@ -26,10 +26,10 @@ const weatherFetchError = (error) => ({
   payload: error
 });
 
-const fetchWeather = (dispatch) => async (showplaceService, country) => {
+const fetchWeather = (dispatch) => async (showplaceService, country, lang) => {
   dispatch(weatherRequested());
   try {
-    const data = await showplaceService.getWeather(country);
+    const data = await showplaceService.getWeather(country, lang);
     await dispatch(weatherLoaded(data))
   } catch (error) {
     dispatch(weatherFetchError(error))

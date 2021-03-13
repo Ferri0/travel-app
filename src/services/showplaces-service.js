@@ -3,7 +3,7 @@ class ShowplaceService {
 
   apiWeatherKey = 'c16994fc025240af68d42239b19a63b1'
 
-  apiWeatherBase = (country = 'ukraine') => `http://api.openweathermap.org/data/2.5/weather?q=${country}&appid=${this.apiWeatherKey}`;
+  apiWeatherBase = (country = 'ukraine', lang = 'en') => `https://api.openweathermap.org/data/2.5/weather?q=${country}&lang=${lang}&appid=${this.apiWeatherKey}&units=metric`;
 
   getResource = async (url) => {
     const res = await fetch(url);
@@ -28,30 +28,16 @@ class ShowplaceService {
     return res;
   }
 
-  getWeather = async (country) => {
-
-    const weather = await this.getResource(this.apiWeatherBase(country));
-    // {
-    //   country: "UA",
-    //   main: {
-    //     feels_like: 263.91,
-    //     grnd_level: 995,
-    //     humidity: 96,
-    //     pressure: 1015,
-    //     sea_level: 1015,
-    //     temp: 271.94,
-    //     temp_max: 271.94,
-    //     temp_min: 271.94,
-    //   },
-    //   name: "Ukraine",
-    //   weather: {
-    //     description: "light snow",
-    //     icon: "13n",
-    //     id: 600,
-    //     main: "Snow",
-    //   }
-    // }
+  getWeather = async (country, lang) => {
+    const weather = await this.getResource(this.apiWeatherBase(country, lang));
     return this.transformWeather(weather);
+  }
+
+  getCurrency = async () => {
+    fetch('https://api.exchangeratesapi.io/latest?symbols=USD,UAN')
+      .then((result) => result.json())
+      .then(data => console.log(data))
+      .catch((err) => console.log(err));
   }
 
   transformWeather = (weather) => ({
