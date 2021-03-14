@@ -17,7 +17,9 @@ function Footer() {
       <a href="https://github.com/IgorAleks88" target="blank">
         Igor Alekseyenko
       </a>
-      RSS Logo
+      <a href="https://rs.school/react/" target="blank">
+        <img alt="rsschool" src="../../assets/images/rs-logo.png" />
+      </a>
     </div>
   );
 }
