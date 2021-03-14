@@ -3,16 +3,25 @@ import PropTypes from 'prop-types';
 
 import './widgets.scss';
 
-const TimeWidget = ({ lang }) => {
+const updateTime = (UTC) => {
+  const differenceTime = (new Date().getTimezoneOffset() / 60) + UTC;
+  const date = new Date();
+  date.setHours(date.getHours() + differenceTime);
+  return date;
+};
+
+const TimeWidget = ({ lang, UTC }) => {
   const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
   const timeOptions = { hour: "numeric", minute: "numeric", second: "numeric" };
   const dateFormatter = new Intl.DateTimeFormat(lang, dateOptions);
-  const timeFormatter = new Intl.DateTimeFormat(lang, timeOptions)
-  const time = timeFormatter.format(new Date());
-  const [timer, setTimer] = useState(timeFormatter.format(new Date()));
+  const timeFormatter = new Intl.DateTimeFormat(lang, timeOptions);
+  
+  const [time, setTime] = useState(timeFormatter.format(updateTime(UTC)));
+  
   const timerId = setTimeout(() => {
-    setTimer(timeFormatter.format(new Date()))
+    setTime(timeFormatter.format(updateTime(UTC)));
   }, 1000);
+
   useEffect(() => () => {
     clearTimeout(timerId);
   }, [timerId]);
@@ -20,13 +29,14 @@ const TimeWidget = ({ lang }) => {
   return (
     <div className="widget-date-point">
       <time className="widget__date" dateTime="2021" >{dateFormatter.format(new Date())}</time>
-      <time className="widget__time" dateTime={timer} >{timer}</time>
+      <time className="widget__time" dateTime={time} >{time}</time>
     </div>
   )
 };
 
 TimeWidget.propTypes = {
-  lang: PropTypes.string.isRequired
+  lang: PropTypes.string.isRequired,
+  UTC: PropTypes.number.isRequired
 }
 
 export {

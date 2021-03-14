@@ -26,15 +26,19 @@ const weatherFetchError = (error) => ({
   payload: error
 });
 
-const fetchWeather = (dispatch) => async (showplaceService, country, lang) => {
-  dispatch(weatherRequested());
-  try {
-    const data = await showplaceService.getWeather(country, lang);
-    await dispatch(weatherLoaded(data))
-  } catch (error) {
-    dispatch(weatherFetchError(error))
-  }
-}
+const currencyRequested = () => ({
+  type: 'FETCH_CURRENCY_REQUEST'
+});
+
+const currencyLoaded = (currency) => ({
+  type: 'FETCH_CURRENCY_SUCCESS',
+  payload: currency
+});
+
+const currencyFetchError = (error) => ({
+  type: 'FETCH_CURRENCY_FAILURE',
+  payload: error
+});
 
 const fetchShowplace = (dispatch) => async (showplaceService) => {
   dispatch(showplaceRequested());
@@ -46,7 +50,28 @@ const fetchShowplace = (dispatch) => async (showplaceService) => {
   }
 }
 
+const fetchWeather = (dispatch) => async (showplaceService, country, lang) => {
+  dispatch(weatherRequested());
+  try {
+    const data = await showplaceService.getWeather(country, lang);
+    await dispatch(weatherLoaded(data))
+  } catch (error) {
+    dispatch(weatherFetchError(error))
+  }
+}
+
+const fetchSCurrency = (dispatch) => async (showplaceService) => {
+  dispatch(currencyRequested());
+  try {
+    const data = await showplaceService.getCurrencyTest();
+    await dispatch(currencyLoaded(data))
+  } catch (error) {
+    dispatch(currencyFetchError(error))
+  }
+}
+
 export {
   fetchShowplace,
-  fetchWeather
+  fetchWeather,
+  fetchSCurrency
 };

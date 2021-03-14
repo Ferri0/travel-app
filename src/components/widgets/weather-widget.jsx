@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types'
 
 const WeatherWidget = ({ nameLang, lang, weather }) => (
-    <div className="widget-weather-pint">
+  <div className="widget-weather-point">
     <div className="city">
         {nameLang[lang]}
     </div>
@@ -13,8 +13,8 @@ const WeatherWidget = ({ nameLang, lang, weather }) => (
     <div className="decription">
       <cite>{weather.weather.description}</cite>
     </div>
-</div>
-  );
+  </div>
+);
 
 WeatherWidget.propTypes = {
   nameLang: PropTypes.objectOf(PropTypes.string).isRequired,

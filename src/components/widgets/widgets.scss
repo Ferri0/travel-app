@@ -37,7 +37,7 @@
   font-size: 35px;
 }
 
-.widget-weather-pint {
+.widget-weather-point {
   text-align: center;
 }
 
@@ -61,4 +61,18 @@
 
 .widget-date-point {
   margin-top: 10px;
+}
+
+.widget-currency-point {
+  font-size: 25px;
+  text-align: center;
+  font-family: monospace, Geneva, Tahoma, sans-serif;
+}
+
+.currency__paragraph {
+  margin: 5px;
+}
+
+.currency__flag {
+  display: inline;
 }
