@@ -9,6 +9,7 @@ function CountryPage() {
   return (
     <div className={style.countryPageWrapper}>
       <Header parrent="countryPage" />
+      <CountryPageDitails />
       <AuthPage />
       <Footer />
     </div>

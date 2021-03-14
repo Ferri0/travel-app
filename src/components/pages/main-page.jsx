@@ -9,6 +9,7 @@ function MainPage() {
   return (
     <div className={style.mainPageWrapper}>
       <Header />
+      <MainPageDetails />
       <AuthPage />
       <Footer />
     </div>

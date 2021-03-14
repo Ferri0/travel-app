@@ -12,7 +12,9 @@
     height: 25vh;
     min-height: 250px;
     background-color: #f00;
+    z-index:20;
     transform: translate(-50%, -50%);
+    
 }
 
 .authPageWrapperHidden{
