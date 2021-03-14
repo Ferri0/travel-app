@@ -1,0 +1,45 @@
+@import '../../scss/abstracts.scss';
+
+.authPageWrapper {
+    position: absolute;
+    top: 50vh;
+    left: 50vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 20vh;
+    min-width: 250px;
+    height: 25vh;
+    min-height: 250px;
+    background-color: #f00;
+    transform: translate(-50%, -50%);
+}
+
+.authPageWrapperHidden{
+    visibility:hidden;
+}
+
+.authPageHeader {
+    color: #00f;
+    font-size: 20px;
+}
+
+.authPageError {
+    color: #0f0;
+    font-size: 16px;
+}
+
+.authPageInput{
+    width: 70%;
+    height: 10%;
+}
+
+.authPageButton{
+    width: 70%;
+    height: 10%;
+}
+
+.authPageText{
+    color: #00f;
+    font-size: 14px;
+}

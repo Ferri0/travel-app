@@ -3,12 +3,13 @@ import Header from '../header';
 import CountryPageDitails from '../containers/country-page-details';
 import Footer from '../footer';
 import style from './country-page.module.scss';
+import AuthPage from '../auth-page';
 
 function CountryPage() {
   return (
     <div className={style.countryPageWrapper}>
       <Header parrent="countryPage" />
-      <CountryPageDitails />
+      <AuthPage />
       <Footer />
     </div>
   );
