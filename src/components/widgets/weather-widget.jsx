@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 
-const WeatherWidget = ({ nameLang, lang, weather }) => (
+const WeatherWidget = ({ capital, lang, weather }) => (
   <div className="widget-weather-point">
     <div className="city">
-        {nameLang[lang]}
+        {capital[lang]}
     </div>
     <div className="temp">
       <i className="owf owf-200 owf-2x" />
@@ -17,7 +17,7 @@ const WeatherWidget = ({ nameLang, lang, weather }) => (
 );
 
 WeatherWidget.propTypes = {
-  nameLang: PropTypes.objectOf(PropTypes.string).isRequired,
+  capital: PropTypes.objectOf(PropTypes.string).isRequired,
   lang: PropTypes.string.isRequired,
   weather: PropTypes.objectOf(PropTypes.any).isRequired
 }

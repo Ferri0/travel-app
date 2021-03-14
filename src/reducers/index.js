@@ -12,6 +12,6 @@ const reducer = (state, action) => ({
   showplacesList: showplacesList(state, action),
   weatherData: weatherData(state, action),
   currencyList: currencyList(state, action)
-})
+});
 
 export default reducer;

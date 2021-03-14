@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import {useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 import { Context } from '../showplace-service-context';
-import { fetchWeather, fetchSCurrency } from '../../action';
+import { fetchWeather, fetchCurrency } from '../../action';
 import { Spinner } from '../spinner'
 import { ErrorIndicator } from '../error-indicator';
 import { WeatherWidget } from "./weather-widget";
@@ -18,12 +18,12 @@ const Widgets = () => {
   const dispatch = useDispatch();
   const { lang } = showplacesList;
   const currentCounrty = showplacesList.showplaces.find(({name_lang: nameLang}) => nameLang[lang].toLowerCase() === country.toLowerCase());
-  const { name, name_lang: nameLang, UTC } = currentCounrty;
+  const { name, capital, UTC } = currentCounrty;
   const { weather, loading, error } = weatherData;
 
   useEffect(() => {
     fetchWeather(dispatch)(showplaceService, name, lang);
-    fetchSCurrency(dispatch)(showplaceService)
+    fetchCurrency(dispatch)(showplaceService);
   }, [showplaceService, dispatch, name, lang])
 
   if (loading) {
@@ -36,9 +36,9 @@ const Widgets = () => {
 
   return (
     <div className="widgets"> 
-      <WeatherWidget lang={lang} nameLang={nameLang} weather={weather} />
+      <WeatherWidget lang={lang} capital={capital} weather={weather} />
       <TimeWidget lang={lang} UTC={UTC} />
-      <CurrnecyWidget currency={currencyList} />
+      <CurrnecyWidget lang={lang} currency={currencyList} currentCounrty={currentCounrty} />
     </div>  
   )
 };

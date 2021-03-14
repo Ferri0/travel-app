@@ -4,7 +4,6 @@ const currencyList = (state, action) => {
       currencyList: {},
       loading: true,
       error: false,
-      lang: 'ru',
     };
   };
 

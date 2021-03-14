@@ -60,7 +60,7 @@ const fetchWeather = (dispatch) => async (showplaceService, country, lang) => {
   }
 }
 
-const fetchSCurrency = (dispatch) => async (showplaceService) => {
+const fetchCurrency = (dispatch) => async (showplaceService) => {
   dispatch(currencyRequested());
   try {
     const data = await showplaceService.getCurrencyTest();
@@ -73,5 +73,5 @@ const fetchSCurrency = (dispatch) => async (showplaceService) => {
 export {
   fetchShowplace,
   fetchWeather,
-  fetchSCurrency
+  fetchCurrency,
 };
