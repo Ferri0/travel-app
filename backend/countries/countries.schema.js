@@ -33,7 +33,13 @@ const countrySchema = new Schema(
                     en:String,
                     ru:String,
                     ua:String
-                }
+                },
+                rate: [
+                    {
+                        user:String,
+                        rating:Number
+                    }
+                ]
             }
         ]
 

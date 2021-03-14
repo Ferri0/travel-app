@@ -43,6 +43,16 @@ class ShowplaceService {
     }
     return result;
   }
+
+  rate = async (countryId, attractionIndex, user, rating) => {
+    const data = {countryId, attractionIndex, user, rating}
+    let result = 'error';
+    const response = await fetch('api/rate', {method: 'POST', headers: {'Content-Type': 'application/json'},body: JSON.stringify(data)});
+    if (response.ok) {
+     result = await response.text();
+    }
+    return result;
+  }
 }
 
 

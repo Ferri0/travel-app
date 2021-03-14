@@ -43,6 +43,15 @@ app.post('/api/register', async (req, res) => {
   res.send(result);
 });
 
+app.post('/api/rate', async (req, res) => {
+  const newRate = {user:req.body.user, rating:req.body.rating};
+  const currentAttraction = `attraction.${req.body.attractionIndex}.rate`;
+  await Country.updateOne({_id:req.body.countryId}, {$push:{[currentAttraction]:newRate}});
+  const doc = await Country.findById(req.body.countryId);
+  doc.save();
+  res.send("ok");
+});
+
 const PORT = process.env.PORT || 3000;
 
 mongoose.connect(mongoURL, {
