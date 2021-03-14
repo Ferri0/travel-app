@@ -1,12 +1,27 @@
 @import '../../scss/abstracts.scss';
 
 .header {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  z-index: 2;
   display: flex;
   justify-content: space-between;
-  background: rgb(16, 233, 124);
+  padding: 10px 20px;
+  transform: translateX(-50%);
   @include size(100vw, 50px);
 }
 
 .searchInput {
   @include size(auto, 20px);
+}
+
+.logo {
+  background: url('../../assets/images/logo.png') no-repeat center;
+  background-size: contain;
+  @include size(170px);
+}
+
+.logo:hover {
+  cursor: pointer;
 }

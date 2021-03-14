@@ -1,9 +1,17 @@
+* {
+  box-sizing: border-box;
+}
+
 #root {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100vw;
+  font-family: 'Raleway';
   // height: 100vh;
-  background-color: #67e6ad;
+}
+
+button {
+  cursor: pointer;
 }
