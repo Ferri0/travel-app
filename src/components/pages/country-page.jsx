@@ -10,6 +10,7 @@ function CountryPage() {
     <div className={style.countryPageWrapper}>
       <Header parrent="countryPage" />
       <AuthPage />
+      <CountryPageDitails />
       <Footer />
     </div>
   );
