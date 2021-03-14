@@ -15,7 +15,9 @@ const countrySchema = new Schema({
     ru: String,
     ua: String
   },
+  UTC: Number,
   img: String,
+  video: String,
   description: {
     en: String,
     ru: String,

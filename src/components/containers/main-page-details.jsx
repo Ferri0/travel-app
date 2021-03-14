@@ -5,7 +5,8 @@ import { Spinner } from '../spinner';
 import { Context } from '../showplace-service-context';
 import { fetchShowplace } from '../../action';
 import { ErrorIndicator } from '../error-indicator';
-import { MainPageList } from '../main-page-list';
+import { Slider } from '../slider';
+import style from './main-page-details.module.scss';
 
 const MainPageDetails = (props) => {
   const showplaceService = useContext(Context);
@@ -18,32 +19,24 @@ const MainPageDetails = (props) => {
   if (loading) {
     return <Spinner />;
   }
-  
+
   if (error) {
     return <ErrorIndicator />;
   }
+
   return (
-    <ul>
-        {
-      showplaces.map((showplace) => {
-        const {_id} = showplace;
-        return (
-          <li key={_id}>
-          <MainPageList lang={lang} showplace={showplace} />
-        </li>
-        )
-      })
-    }
-    </ul>
-  )
-}
+    <div className={style.mainContent}>
+      <Slider showplaces={showplaces} lang={lang} />
+    </div>
+  );
+};
 
 MainPageDetails.propTypes = {
   showplaces: PropTypes.arrayOf(PropTypes.object),
   fetchShowplaces: PropTypes.func,
   loading: PropTypes.bool.isRequired,
   error: PropTypes.bool,
-  lang: PropTypes.string.isRequired
+  lang: PropTypes.string.isRequired,
 };
 
 MainPageDetails.defaultProps = {
