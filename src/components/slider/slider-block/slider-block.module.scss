@@ -34,6 +34,10 @@
   transition: all 1s ease;
 }
 
+.slideCard:hover {
+  box-shadow: 0 0 5px 3px #fff;
+}
+
 .slideCard .title {
   font-weight: 600;
 }

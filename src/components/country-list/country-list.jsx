@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import {ShowplaceService} from '../../services';
 import {setShowAuth} from '../../action';
+import { Widgets } from '../widgets'
 
 import './country-list.scss';
 
@@ -10,13 +11,14 @@ const showplaceService = new ShowplaceService;
 
 const CountryList = (props) => {
   const { currentUser, currentCounrty, lang, setShowAuthAction } = props;
-  const { name_lang: title, attraction } = currentCounrty;
+  const { name_lang: title, attraction, img: catipalImg  } = currentCounrty;
   const { _id } = currentCounrty;
   
-
   return (
     <div>
       <h2 className="countri__title">{ title[lang] }</h2>
+      <img className="country__img" src={catipalImg} alt="capital-img"/>
+      <Widgets />
       <ul className="countri__list">
         {
           attraction.map(({ name, img, description, id, rate}, index) => (

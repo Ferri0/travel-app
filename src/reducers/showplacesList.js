@@ -7,16 +7,16 @@ const showplacesList = (state, action) => {
       lang: 'ua',
       isShowAuth: false,
       isAuthorized: false,
-      currentUser: null
+      currentUser: null,
     };
-  };
+  }
 
   switch (action.type) {
     case 'FETCH_SHOWPLACE_REQUEST': {
       return {
         ...state.showplacesList,
         loading: true,
-      }
+      };
     }
 
     case 'FETCH_SHOWPLACE_SUCCESS': {
@@ -25,7 +25,7 @@ const showplacesList = (state, action) => {
         showplaces: action.payload,
         loading: false,
         error: false,
-      }
+      };
     }
 
     case 'FETCH_SHOWPLACE_FAILURE': {
@@ -33,29 +33,36 @@ const showplacesList = (state, action) => {
         ...state.showplacesList,
         showplaces: [],
         loading: false,
-        error: action.payload
-      }
+        error: action.payload,
+      };
     }
 
     case 'SET_SHOW_AUTH': {
       return {
         ...state.showplacesList,
-        isShowAuth: action.payload
-      }
+        isShowAuth: action.payload,
+      };
     }
 
     case 'SET_AUTHORIZED': {
       return {
         ...state.showplacesList,
-        isAuthorized: action.payload
-      }
+        isAuthorized: action.payload,
+      };
     }
 
     case 'SET_CURRENT_USER': {
       return {
         ...state.showplacesList,
-        currentUser: action.payload
-      }
+        currentUser: action.payload,
+      };
+    }
+
+    case 'SET_LANG': {
+      return {
+        ...state.showplacesList,
+        lang: action.payload,
+      };
     }
 
     default:
@@ -63,6 +70,4 @@ const showplacesList = (state, action) => {
   }
 };
 
-export {
-  showplacesList
-};
+export { showplacesList };

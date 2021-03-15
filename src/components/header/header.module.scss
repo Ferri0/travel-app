@@ -12,10 +12,6 @@
   @include size(100vw, 50px);
 }
 
-.searchInput {
-  @include size(auto, 20px);
-}
-
 .logo {
   background: url('../../assets/images/logo.png') no-repeat center;
   background-size: contain;
