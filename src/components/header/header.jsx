@@ -3,25 +3,16 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import HeaderAuthBlock from '../header-auth-block';
 import style from './header.module.scss';
-
-function getSearch(parrent) {
-  if (parrent === 'countryPage') return false;
-  return (
-    <input
-      type="search"
-      className={style.searchInput}
-      placeholder="search country"
-    />
-  );
-}
+import { Search } from './search';
+import { LangSelect } from './lang-select';
 
 function Header({ parrent }) {
   return (
     <div className={style.header}>
       <Link to="/" className={style.logo} />
-      {getSearch(parrent)}
+      <Search parrent={parrent} />
       <HeaderAuthBlock />
-      Localization
+      <LangSelect />
     </div>
   );
 }
