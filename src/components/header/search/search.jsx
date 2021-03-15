@@ -1,9 +1,24 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { Context } from '../../showplace-service-context';
+import { fetchShowplace } from '../../../action';
 import style from './search.module.scss';
 
-function Search({ parrent }) {
+function Search(props) {
+  const showplaceService = useContext(Context);
+  const { lang, fetchShowplaces, parrent } = props;
+
+  useEffect(() => {
+    fetchShowplaces(showplaceService);
+  }, [showplaceService, fetchShowplaces]);
+
   const inputRef = useRef(null);
+  const placeholder = {
+    ua: 'пошук країни',
+    en: 'search country',
+    ru: 'поиск страны',
+  };
 
   useEffect(() => {
     if (inputRef.current !== null) inputRef.current.focus();
@@ -16,7 +31,7 @@ function Search({ parrent }) {
         ref={inputRef}
         type="search"
         className={style.searchInput}
-        placeholder="search country"
+        placeholder={placeholder[lang]}
         results={0}
       />
       <button type="button" className={style.searchButton}>
@@ -26,12 +41,24 @@ function Search({ parrent }) {
   );
 }
 
-export { Search };
-
 Search.propTypes = {
   parrent: PropTypes.string,
+  fetchShowplaces: PropTypes.func,
+  lang: PropTypes.string.isRequired,
 };
 
 Search.defaultProps = {
   parrent: null,
+  fetchShowplaces: PropTypes.func,
 };
+
+const mapDispatchToProps = (dispatch) => ({
+  fetchShowplaces: fetchShowplace(dispatch),
+});
+
+const mapStateToProps = ({ showplacesList: { showplaces, lang } }) => ({
+  showplaces,
+  lang,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Search);
