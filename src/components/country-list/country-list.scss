@@ -26,3 +26,16 @@
   display: flex;
   flex-direction: column;
 }
+  
+  
+
+.rating-button {
+    width: 20%;
+    height: 100%;
+  }
+  
+.rating-buttons-wrapper {
+    display: flex;
+    min-width: 100px;
+    min-height: 25px;
+  }
