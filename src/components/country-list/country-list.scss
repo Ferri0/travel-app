@@ -39,3 +39,14 @@
     min-width: 100px;
     min-height: 25px;
   }
+
+.rating-marks-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-width: 150px;
+  max-width: 90%;
+  min-height: 50px;
+  color: #00f;
+  background-color: #f00;
+  
+}
