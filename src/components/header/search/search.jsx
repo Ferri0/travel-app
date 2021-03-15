@@ -6,7 +6,7 @@ function Search({ parrent }) {
   const inputRef = useRef(null);
 
   useEffect(() => {
-    inputRef.current.focus();
+    if (inputRef.current !== null) inputRef.current.focus();
   }, []);
 
   if (parrent === 'countryPage') return false;
