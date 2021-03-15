@@ -4,7 +4,10 @@ const showplacesList = (state, action) => {
       showplaces: [],
       loading: true,
       error: false,
-      lang: 'ru',
+      lang: 'ua',
+      isShowAuth: false,
+      isAuthorized: false,
+      currentUser: null
     };
   };
 
@@ -31,6 +34,27 @@ const showplacesList = (state, action) => {
         showplaces: [],
         loading: false,
         error: action.payload
+      }
+    }
+
+    case 'SET_SHOW_AUTH': {
+      return {
+        ...state.showplacesList,
+        isShowAuth: action.payload
+      }
+    }
+
+    case 'SET_AUTHORIZED': {
+      return {
+        ...state.showplacesList,
+        isAuthorized: action.payload
+      }
+    }
+
+    case 'SET_CURRENT_USER': {
+      return {
+        ...state.showplacesList,
+        currentUser: action.payload
       }
     }
 

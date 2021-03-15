@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import HeaderAuthBlock from '../header-auth-block';
 import style from './header.module.scss';
 import { Search } from './search';
 
@@ -32,7 +33,12 @@ function Header({ parrent }) {
   return (
     <div className={style.header}>
       <Link to="/" className={style.logo} />
+<<<<<<< HEAD
       <Search parrent={parrent} />
+=======
+      {getSearch(parrent)}
+      <HeaderAuthBlock />
+>>>>>>> de3901b4ef930c8a5299483afb7e25f645f118c9
       Localization
     </div>
   );

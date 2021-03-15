@@ -22,8 +22,30 @@ class ShowplaceService {
     const data = await this.getResource(this.apiBase);
     const res = data.find((item) => item.name === country)
     return res;
+  };
+
+  login = async (name, pass) => {
+    const data = {name, pass}
+    let result = 'error';
+    const response = await fetch('api/login', {method: 'POST', headers: {'Content-Type': 'application/json'},body:JSON.stringify(data)});
+    if (response.ok) {
+     result = await response.text();
+    }
+    return result;
+  }
+
+  register = async (name, pass) => {
+    const data = {name, pass}
+    let result = 'error';
+    const response = await fetch('api/register', {method: 'POST', headers: {'Content-Type': 'application/json'},body:JSON.stringify(data)});
+    if (response.ok) {
+     result = await response.text();
+    }
+    return result;
   }
 }
+
+
 
 export {
   ShowplaceService
