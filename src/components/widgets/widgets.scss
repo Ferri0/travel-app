@@ -1,0 +1,78 @@
+.widgets {
+  display: inline-flex;
+  flex-direction: column;
+  background-color: #fcfdfd;
+  border-radius: 9px;
+  padding: 25px;
+  padding-right: 30px;
+  box-shadow: 0px 31px 35px -26px #080c21;
+  background-image: linear-gradient(45deg, #008fd3, transparent);
+}
+
+.date {
+  font-size: 14px;
+  font-weight: bold;
+  color: rgba(0,0,0,0.5);
+}
+
+.city {
+  font-size: 21px;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding-top: 5px;
+  color: rgba(0,0,0,0.7);
+}
+
+.temp {
+  display: flex;
+  align-items: center;
+  padding-top: 10px;
+  color: rgba(0,0,0,0.9);
+  font-weight: 100;
+  justify-content: center;
+}
+
+.degrees {
+  padding-left: 20px;
+  font-size: 35px;
+}
+
+.widget-weather-point {
+  text-align: center;
+}
+
+.description__text {
+  font-variant-caps: all-petite-caps;
+}
+
+.widget__date {
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding-top: 5px;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.widget__time {
+  display: block;
+  text-align: center;
+  font-size: 35px;
+}
+
+.widget-date-point {
+  margin-top: 10px;
+}
+
+.widget-currency-point {
+  font-size: 25px;
+  text-align: center;
+  font-family: monospace, Geneva, Tahoma, sans-serif;
+}
+
+.currency__paragraph {
+  margin: 5px;
+}
+
+.currency__flag {
+  display: inline;
+}
