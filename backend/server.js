@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 let countries = [];
 const Country = require('./countries/countries.schema');
 const Users = require('./users/users-schema');
+
 const mongoURL = 'mongodb+srv://IgorAleks88:Veremiy1988@cluster0.abmvg.mongodb.net/travel-app?retryWrites=true&w=majority';
 
 const app = express();
@@ -13,7 +14,8 @@ app.use(express.urlencoded());
 app.use(express.static(path.join(__dirname, '../dist')));
 
 
-app.get('/api/countries', (req, res) => {
+app.get('/api/countries', async (req, res) => {
+  countries = await Country.find({});
   res.send(JSON.stringify(countries));
 });
 
@@ -49,7 +51,10 @@ app.post('/api/rate', async (req, res) => {
   await Country.updateOne({_id:req.body.countryId}, {$push:{[currentAttraction]:newRate}});
   const doc = await Country.findById(req.body.countryId);
   doc.save();
-  res.send("ok");
+  const newBaseArray = await Country.find({});
+  const NewSerbia = newBaseArray.find((country) => country.name === "Serbia");
+  res.send(NewSerbia);
+
 });
 
 const PORT = process.env.PORT || 3000;
