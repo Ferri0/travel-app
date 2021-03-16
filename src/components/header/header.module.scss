@@ -15,6 +15,7 @@
 .logo {
   background: url('../../assets/images/logo.png') no-repeat center;
   background-size: contain;
+  filter: drop-shadow(1px 1px 1px #000);
   @include size(170px);
 }
 
