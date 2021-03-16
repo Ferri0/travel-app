@@ -1,11 +1,11 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import RatingPage from '../../rating-page';
 import style from './gallery.module.scss';
 
 function Gallery({ attraction, lang, currentCounrty }) {
-  console.log(attraction);
   const [activeId, setActiveId] = useState(0);
 
   function getInitClasses(data) {
@@ -93,3 +93,9 @@ function Gallery({ attraction, lang, currentCounrty }) {
 }
 
 export { Gallery };
+
+Gallery.propTypes = {
+  attraction: PropTypes.objectOf(PropTypes.any).isRequired,
+  currentCounrty: PropTypes.objectOf(PropTypes.any).isRequired,
+  lang: PropTypes.string.isRequired,
+};

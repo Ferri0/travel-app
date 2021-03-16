@@ -29,7 +29,6 @@ const CountryPageDetails = ({
   if (error) {
     return <ErrorIndicator />;
   }
-  console.log(showplaces, country);
 
   const currentCounrty = showplaces.find(
     ({ name_lang: nameLang }) =>
