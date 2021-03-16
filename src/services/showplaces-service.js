@@ -57,6 +57,7 @@ class ShowplaceService {
     }
     return result;
   }
+
   getWeather = async (country, lang) => {
     const weather = await this.getResource(this.apiWeatherBase(country, lang));
     return this.transformWeather(weather);
