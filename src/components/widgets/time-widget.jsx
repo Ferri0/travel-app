@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
 
 import './widgets.scss';
@@ -12,19 +12,25 @@ const updateTime = (UTC) => {
 
 const TimeWidget = ({ lang, UTC }) => {
   const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-  const timeOptions = { hour: "numeric", minute: "numeric", second: "numeric" };
   const dateFormatter = new Intl.DateTimeFormat(lang, dateOptions);
-  const timeFormatter = new Intl.DateTimeFormat(lang, timeOptions);
+
+  const timeFormatter = useMemo(() => {
+    const timeOptions = { hour: "numeric", minute: "numeric", second: "numeric" };
+    return new Intl.DateTimeFormat(lang, timeOptions)
+  }, [lang]);
   
   const [time, setTime] = useState(timeFormatter.format(updateTime(UTC)));
   
-  const timerId = setTimeout(() => {
-    setTime(timeFormatter.format(updateTime(UTC)));
-  }, 1000);
+  useEffect(() => {
+    const timerId = setTimeout(() => {
+      setTime(timeFormatter.format(updateTime(UTC)));
+    }, 1000);
+    
+    return () => {
+      clearTimeout(timerId);
+    }
+  }, [UTC, timeFormatter])
 
-  useEffect(() => () => {
-    clearTimeout(timerId);
-  }, [timerId]);
 
   return (
     <div className="widget-date-point">
