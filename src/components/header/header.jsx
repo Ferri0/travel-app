@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import HeaderAuthBlock from '../header-auth-block';
 import style from './header.module.scss';
 import { Search } from './search';
+import { LangSelect } from './lang-select';
 
 function Header({ parrent }) {
   return (
@@ -11,7 +12,7 @@ function Header({ parrent }) {
       <Link to="/" className={style.logo} />
       <Search parrent={parrent} />
       <HeaderAuthBlock />
-      Localization
+      <LangSelect />
     </div>
   );
 }

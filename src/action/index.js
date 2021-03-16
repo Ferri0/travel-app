@@ -42,7 +42,7 @@ const currencyFetchError = (error) => ({
 
 const setShowAuth = (value) => ({
   type: 'SET_SHOW_AUTH',
-  payload: value
+  payload: value,
 });
 
 const setAuthorized = (value) => ({
