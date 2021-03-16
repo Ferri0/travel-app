@@ -10,10 +10,7 @@ function Header({ parrent }) {
     <div className={style.header}>
       <Link to="/" className={style.logo} />
       <Search parrent={parrent} />
-<<<<<<< HEAD
-=======
       <HeaderAuthBlock />
->>>>>>> c4b56ae... fix: add main and country detailes
       Localization
     </div>
   );

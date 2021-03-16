@@ -1,15 +1,15 @@
 const showplaceRequested = () => ({
-  type: 'FETCH_SHOWPLACE_REQUEST'
+  type: 'FETCH_SHOWPLACE_REQUEST',
 });
 
 const showplaceLoaded = (showplaces) => ({
   type: 'FETCH_SHOWPLACE_SUCCESS',
-  payload: showplaces
+  payload: showplaces,
 });
 
 const showplaceFetchError = (error) => ({
   type: 'FETCH_SHOWPLACE_FAILURE',
-  payload: error
+  payload: error,
 });
 
 const weatherRequested = () => ({
@@ -47,12 +47,17 @@ const setShowAuth = (value) => ({
 
 const setAuthorized = (value) => ({
   type: 'SET_AUTHORIZED',
-  payload: value
+  payload: value,
 });
 
 const setCurrentUser = (value) => ({
   type: 'SET_CURRENT_USER',
-  payload: value
+  payload: value,
+});
+
+const setLanguage = (value) => ({
+  type: 'SET_LANG',
+  payload: value,
 });
 
 const fetchShowplace = (dispatch) => async (showplaceService) => {
@@ -91,5 +96,6 @@ export {
   fetchCurrency,
   setShowAuth,
   setAuthorized,
-  setCurrentUser
+  setCurrentUser,
+  setLanguage,
 };
