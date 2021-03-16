@@ -91,5 +91,12 @@ CountryList.propTypes = {
   currentCounrty: PropTypes.objectOf(PropTypes.any).isRequired,
   lang: PropTypes.string.isRequired,
 };
-
 export default CountryList;
+const mapStateToProps = ({ showplacesList: { currentUser } }) => ({
+  currentUser,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  setShowAuthAction: (value) => dispatch(setShowAuth(value)), // [1]
+  fetchShowplaceAction: fetchShowplace(dispatch)
+});
