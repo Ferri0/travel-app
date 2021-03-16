@@ -92,10 +92,9 @@ function Gallery({ attraction, lang, currentCounrty }) {
   );
 }
 
-export { Gallery };
-
 Gallery.propTypes = {
   attraction: PropTypes.arrayOf(PropTypes.object).isRequired,
   currentCounrty: PropTypes.objectOf(PropTypes.any).isRequired,
   lang: PropTypes.string.isRequired,
 };
+export { Gallery };
