@@ -1,6 +1,4 @@
-import {
-  CountryList
-} from "./country-list";
+import CountryList from "./country-list";
 
 export {
   CountryList

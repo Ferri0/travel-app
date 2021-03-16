@@ -29,13 +29,20 @@ const countrySchema = new Schema({
       ru: String,
       ua: String
     },
-    img: String,
-    description: {
-      en: String,
-      ru: String,
-      ua: String
+    img:String,
+    description:{
+      en:String,
+      ru:String,
+      ua:String
+    },
+    rate: [
+      {
+        user:String,
+        rating:Number
+      }
+    ]
     }
-  }],
+  ],
   currencyInfo: {
     text: {
       en: String,
