@@ -30,8 +30,9 @@ const CountryList = (props) => {
                     <button key = {`${_id}${i}`}
                     onClick = {() => {
                       if (currentUser) {
-                      showplaceService.rate(_id, index, currentUser, i).then(() => 
-                        fetchShowplaceAction(showplaceService));
+                      showplaceService.rate(_id, index, currentUser, i).then(() => { 
+                        fetchShowplaceAction(showplaceService);
+                      });
                       } else {
                         setShowAuthAction(true);
                       }

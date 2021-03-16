@@ -19,6 +19,7 @@ class ShowplaceService {
 
   getAllCountries = async () => {
     const countries = await this.getResource(this.apiCountryBase);
+    // console.log(countries);
     return countries;
   };
 
@@ -57,6 +58,7 @@ class ShowplaceService {
     }
     return result;
   }
+
   getWeather = async (country, lang) => {
     const weather = await this.getResource(this.apiWeatherBase(country, lang));
     return this.transformWeather(weather);
