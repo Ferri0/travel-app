@@ -1,9 +1,10 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState } from 'react';
+import RatingPage from '../../rating-page';
 import style from './gallery.module.scss';
 
-function Gallery({ attraction, lang }) {
+function Gallery({ attraction, lang, currentCounrty }) {
   console.log(attraction);
   const [activeId, setActiveId] = useState(0);
 
@@ -75,7 +76,13 @@ function Gallery({ attraction, lang }) {
           {attraction[activeId].description[lang]}
         </span>
       </div>
-      <div className={style.attrRate}>RATE</div>
+      <div className={style.attrRate}>
+        <RatingPage
+          rate={attraction[activeId].rate}
+          index={activeId}
+          currentCounrty={currentCounrty}
+        />
+      </div>
       <div className={style.attrNav}>
         <div className={style.attrMover}>
           {getAttrImgs(attraction, classes)}
