@@ -29,10 +29,6 @@ const CountryList = (props) => {
         style={{ background: `url("${countryImg}")` }}
       >
         <h2 className={style.countryTitle}>{title[lang]}</h2>
-        {/* <div
-          className={style.countryImg}
-          style={{ background: `url("${countryImg}")` }}
-        /> */}
         <div className={style.countryText}>
           <span
             className={style.countryCapital}
@@ -46,43 +42,11 @@ const CountryList = (props) => {
       <div className={style.video}>
         <ReactPlayer url={video} />
       </div>
-      <Gallery attraction={attraction} lang={lang} />
-
-      {/* <ul className="countri__list">
-        {attraction.map(({ name, img, description, id, rate }, index) => (
-          <li key={id}>
-            <div>
-              <b>{name[lang]}</b>
-            </div>
-            <img width="250px" src={img} alt={name} />
-            <div className="rating-buttons-wrapper">
-              {[1, 2, 3, 4, 5].map((i) => (
-                <button
-                  key={`${_id}${i}`}
-                  onClick={() => {
-                    if (currentUser) {
-                      showplaceService.rate(_id, index, currentUser, i);
-                    } else {
-                      setShowAuthAction(true);
-                    }
-                  }}
-                  type="button"
-                >
-                  {i}
-                </button>
-              ))}
-            </div>
-            <div className="rating-marks-wrapper">
-              {rate.map((mark, i) => (
-                <span key={i}>{`${mark.user}: ${mark.rating}`}</span>
-              ))}
-            </div>
-            <div>
-              <em>{description[lang]}</em>
-            </div>
-          </li>
-        ))}
-      </ul> */}
+      <Gallery
+        attraction={attraction}
+        lang={lang}
+        currentCounrty={currentCounrty}
+      />
     </div>
   );
 };
