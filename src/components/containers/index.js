@@ -1,7 +1,4 @@
 import MainPageDetails from './main-page-details';
-import CountryPageDitails from './country-page-details';
+import CountryPageDetails from './country-page-details';
 
-export {
-  MainPageDetails,
-  CountryPageDitails
-};
+export { MainPageDetails, CountryPageDetails };

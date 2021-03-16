@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from '../header';
-import CountryPageDitails from '../containers/country-page-details';
+import CountryPageDetails from '../containers/country-page-details';
 import Footer from '../footer';
 import style from './country-page.module.scss';
 import AuthPage from '../auth-page';
@@ -10,7 +10,7 @@ function CountryPage() {
     <div className={style.countryPageWrapper}>
       <Header parrent="countryPage" />
       <AuthPage />
-      <CountryPageDitails />
+      <CountryPageDetails />
       <Footer />
     </div>
   );
