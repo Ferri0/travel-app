@@ -23,8 +23,8 @@
 }
 
 .country__img {
-  width: 250px;
   display: block;
+  width: 250px;
   margin: auto;
 }
 
@@ -35,24 +35,3 @@
   
   
 
-.rating-button {
-    width: 20%;
-    height: 100%;
-  }
-  
-.rating-buttons-wrapper {
-    display: flex;
-    min-width: 100px;
-    min-height: 25px;
-  }
-
-.rating-marks-wrapper {
-  display: flex;
-  flex-direction: column;
-  min-width: 150px;
-  max-width: 90%;
-  min-height: 50px;
-  color: #00f;
-  background-color: #f00;
-  
-}

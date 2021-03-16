@@ -1,19 +1,14 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import {ShowplaceService} from '../../services';
-import {setShowAuth, fetchShowplace} from '../../action';
-import { Widgets } from '../widgets'
+import { Widgets } from '../widgets';
+import RatingPage from '../rating-page';
 
 import './country-list.scss';
 
-const showplaceService = new ShowplaceService;
-
 const CountryList = (props) => {
-  const { currentUser, currentCounrty, lang, setShowAuthAction, fetchShowplaceAction } = props;
+  const { currentCounrty, lang } = props;
   const { name_lang: title, attraction, img: catipalImg  } = currentCounrty;
-  const { _id } = currentCounrty;
-  
+    
   return (
     <div>
       <h2 className="countri__title">{ title[lang] }</h2>
@@ -25,26 +20,7 @@ const CountryList = (props) => {
               <li key={id}>
                 <div><b>{name[lang]}</b></div>
                 <img width="250px" src={img} alt={name}/>
-                <div className = "rating-buttons-wrapper">
-                {[1,2,3,4,5].map((i) => (
-                    <button key = {`${_id}${i}`}
-                    onClick = {() => {
-                      if (currentUser) {
-                      showplaceService.rate(_id, index, currentUser, i).then(() => { 
-                        fetchShowplaceAction(showplaceService);
-                      });
-                      } else {
-                        setShowAuthAction(true);
-                      }
-                    }}
-                    type="button">{i}</button>
-                  ))}
-                </div>
-                <div className = "rating-marks-wrapper">
-                  {rate.map((mark) => (
-                    <span>{`${mark.user}: ${mark.rating}`}</span>
-          ))}
-                </div>
+                <RatingPage rate={rate} index={index} currentCounrty={currentCounrty}/>
                 <div><em>{description[lang]}</em></div>
               </li>
           ))
@@ -56,24 +32,9 @@ const CountryList = (props) => {
 
 CountryList.propTypes = {
   currentCounrty: PropTypes.objectOf(PropTypes.any).isRequired,
-  lang: PropTypes.string.isRequired,
-  currentUser:PropTypes.string,
-  setShowAuthAction: PropTypes.func.isRequired
-
+  lang: PropTypes.string.isRequired
 }
 
-CountryList.defaultProps = {
-  currentUser: null
-}
 
-const mapStateToProps = ({
-  showplacesList: { currentUser },
-}) => ({ currentUser });
-
-const mapDispatchToProps = (dispatch) => ({
-  setShowAuthAction: (value) => dispatch(setShowAuth(value)), // [1]
-  fetchShowplaceAction: fetchShowplace(dispatch)
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(CountryList);
+export default CountryList;
 
