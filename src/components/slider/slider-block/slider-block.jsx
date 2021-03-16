@@ -7,13 +7,9 @@ function SliderBlock({ data, changeSlide, slideClasses, ind }) {
   const moveCardRef = useRef(null);
   const [cardWidth, setWidth] = useState(0);
 
-  const initCardOpacity = (arr) => {
-    const arrCardOpacity = [];
-    arr.forEach(() => {
-      arrCardOpacity.push('show');
-    });
-    return arrCardOpacity;
-  };
+  const initCardOpacity = (arr) => (
+    arr.map(() => 'show')
+  );
 
   const [cardOpacity, setOpacity] = useState(() => initCardOpacity(data));
 
@@ -22,12 +18,9 @@ function SliderBlock({ data, changeSlide, slideClasses, ind }) {
       setWidth(moveCardRef.current.offsetWidth + 20); // 20 is card's margin-right
     }
   }, [moveCardRef]);
-
+  
   useEffect(() => {
-    const arr = cardOpacity.map((_item, i) => {
-      if (i >= ind) return 'show';
-      return 'hide';
-    });
+    const arr = cardOpacity.map((_, i) => i >= ind ? 'show' : 'hide');
     setOpacity(arr);
   }, [ind]);
 

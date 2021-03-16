@@ -23,6 +23,7 @@ const showplacesList = (state, action) => {
       return {
         ...state.showplacesList,
         showplaces: action.payload,
+        copyShoplaces: action.payload,
         loading: false,
         error: false,
       };
@@ -35,6 +36,13 @@ const showplacesList = (state, action) => {
         loading: false,
         error: action.payload,
       };
+    }
+
+    case 'SEARCH_COUNTRIES': {
+      return {
+        ...state.showplacesList,
+        showplaces: action.payload,
+      }
     }
 
     case 'SET_SHOW_AUTH': {
@@ -70,4 +78,6 @@ const showplacesList = (state, action) => {
   }
 };
 
-export { showplacesList };
+export {
+  showplacesList
+};

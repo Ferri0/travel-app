@@ -6,7 +6,7 @@ import { Gallery } from './gallery';
 import style from './country-list.module.scss';
 
 const CountryList = (props) => {
-  const { currentCounrty, lang } = props;
+  const { currentCounrty, lang,  } = props;
   const {
     name_lang: title,
     attraction,
@@ -15,7 +15,6 @@ const CountryList = (props) => {
     description: countryDesc,
     video,
   } = currentCounrty;
-  // const { _id } = currentCounrty;
   const capitalTxt = {
     ua: 'Столиця',
     en: 'Capital',

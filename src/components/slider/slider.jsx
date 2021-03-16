@@ -1,18 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
 import style from './slider.module.scss';
 import { VControl } from './v-control';
 import { TextBlock } from './text-block';
 import { SliderBlock } from './slider-block';
 
-function getInitClasses(data) {
-  const arr = [];
-  data.forEach((_item, i) => {
-    if (i === 0) arr.push('active');
-    else arr.push('no-active');
-  });
-  return arr;
-}
+const  getInitClasses = (data) => (
+  data.map((_, i) => i === 0 ? 'active' : 'no-active'
+));
 
 function generateMainImgs(data, cls) {
   return data.map((item, i) => (
@@ -24,42 +19,36 @@ function generateMainImgs(data, cls) {
   ));
 }
 
-function changeClasses(ind, cls) {
-  const arr = [...cls];
-  arr.forEach((item, i) => {
-    if (i === ind) arr[i] = 'active';
-    else arr[i] = 'no-active';
-  });
-  return arr;
-}
+const changeClasses = (ind, cls) => (
+  [...cls].map((item, i) => i === ind ? 'active' : 'no-active')
+);
 
 function generateSliderData(arr, lang) {
-  const data = [];
-  arr.forEach((country) => {
-    const obj = {
-      title: country.name_lang[lang],
-      subtitle: country.capital[lang],
-      text: country.description[lang],
-      img: country.img,
-      miniature: country.attraction[0].img,
-      attractions: country.attraction,
-    };
-    data.push(obj);
-  });
-  return data;
+  return arr.map((country) => ({
+    title: country.name_lang[lang],
+    subtitle: country.capital[lang],
+    text: country.description[lang],
+    img: country.img,
+    miniature: country.attraction[0].img,
+    attractions: country.attraction,
+  }));
 }
 
 function Slider({ showplaces, lang }) {
-  const data = generateSliderData(showplaces, lang);
-
+  const sliderData = useMemo(() => generateSliderData(showplaces, lang), [showplaces, lang]);
+  
   const [activeInd, setActiveInd] = useState(0);
-  const [slideClasses, setSlideClasses] = useState(getInitClasses(data));
-
+  const [slideClasses, setSlideClasses] = useState(getInitClasses(sliderData));
+  
+  useEffect(() => {
+    setSlideClasses(getInitClasses(sliderData))
+  }, [sliderData])
+  
   const changeSlide = (i) => {
     const maxInd = slideClasses.length;
     let ind = activeInd + i;
     if (ind < 0) ind = maxInd - 1;
-    if (ind === maxInd) ind = 0;
+    if (ind >= maxInd) ind = 0;
     setActiveInd(ind);
     setSlideClasses(changeClasses(ind, slideClasses));
   };
@@ -71,17 +60,17 @@ function Slider({ showplaces, lang }) {
 
   return (
     <div className={style.slider}>
-      {generateMainImgs(data, slideClasses)}
+      {generateMainImgs(sliderData, slideClasses)}
       <div className={style.overlay} />
       <VControl
-        data={data}
+        data={sliderData}
         ind={activeInd}
         slideClasses={slideClasses}
         selectCountry={selectCountry}
       />
-      <TextBlock data={data} ind={activeInd} slideClasses={slideClasses} />
+      <TextBlock data={sliderData} ind={activeInd} slideClasses={slideClasses} />
       <SliderBlock
-        data={data}
+        data={sliderData}
         changeSlide={changeSlide}
         slideClasses={slideClasses}
         ind={activeInd}

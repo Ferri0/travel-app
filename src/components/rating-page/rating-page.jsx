@@ -13,26 +13,26 @@ const RatingPage = (props) => {
 
     return (
         <div className = {style.ratingWrapper}>
-            <div className = {style.ratingButtonWrapper}>
-                {[1,2,3,4,5].map((i) => (
-                    <button key = {`${_id}${i}`}
-                    onClick = {() => {
-                      if (currentUser) {
-                      showplaceService.rate(_id, index, currentUser, i).then(() => { 
-                        fetchShowplaceAction(showplaceService);
-                      });
-                      } else {
-                        setShowAuthAction(true);
-                      }
-                    }}
-                    type="button">{i}</button>
-                  ))}
-                </div>
-                <div className = {style.ratingMarksWrapper}>
-                  {rate.map((mark) => (
-                    <span key={mark.id}>{`${mark.user}: ${mark.rating}`}</span>
-          ))}
-                </div>
+          <div className = {style.ratingButtonWrapper}>
+            {[1,2,3,4,5].map((i) => (
+              <button key = {`${_id}${i}`}
+                onClick = {() => {
+                if (currentUser) {
+                  showplaceService.rate(_id, index, currentUser, i).then(() => { 
+                  fetchShowplaceAction(showplaceService);
+                });
+                } else {
+                  setShowAuthAction(true);
+                }
+              }}
+              type="button">{i}</button>
+            ))}
+          </div>
+          <div className = {style.ratingMarksWrapper}>
+            {rate.map(({_id: id, user, rating}) => (
+              <span key={id}>{`${user}: ${rating}`}</span>
+            ))}
+          </div>
         </div>
     )
 }
