@@ -1,23 +1,36 @@
 import React, { useRef, useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Context } from '../../showplace-service-context';
-import { fetchShowplace } from '../../../action';
+import { fetchShowplace, searchCountries } from '../../../action';
 import style from './search.module.scss';
 
-function Search(props) {
+function Search({ parrent }) {
   const showplaceService = useContext(Context);
-  const { lang, fetchShowplaces, parrent } = props;
-
+  const { copyShoplaces, lang } = useSelector(state => state.showplacesList);
+  const dispatch = useDispatch();
+  
   useEffect(() => {
-    fetchShowplaces(showplaceService);
-  }, [showplaceService, fetchShowplaces]);
-
+    fetchShowplace(dispatch)(showplaceService);
+  }, [showplaceService, dispatch]);
+  
   const inputRef = useRef(null);
   const placeholder = {
     ua: 'пошук країни',
     en: 'search country',
     ru: 'поиск страны',
+  };
+  
+  const handleSearch = (event) => {
+    const { key, type } = event;
+    if (key === 'Enter' || type === 'click') {
+      const { value } = inputRef.current;
+      const showplacesFilterList = copyShoplaces.filter((country) => (
+        country.name_lang[lang].toLowerCase().includes(value.toLowerCase())
+        || country.capital[lang].toLowerCase().includes(value.toLowerCase())
+      ));
+      dispatch(searchCountries(showplacesFilterList));
+    };
   };
 
   useEffect(() => {
@@ -32,9 +45,13 @@ function Search(props) {
         type="search"
         className={style.searchInput}
         placeholder={placeholder[lang]}
+        onKeyUp={(e) => handleSearch(e)}
         results={0}
       />
-      <button type="button" className={style.searchButton}>
+      <button type="button"
+        className={style.searchButton}
+        onClick={(e) => handleSearch(e)}
+       >
         <i className="fas fa-search" />
       </button>
     </div>
@@ -43,22 +60,11 @@ function Search(props) {
 
 Search.propTypes = {
   parrent: PropTypes.string,
-  fetchShowplaces: PropTypes.func,
-  lang: PropTypes.string.isRequired,
 };
 
 Search.defaultProps = {
   parrent: null,
-  fetchShowplaces: PropTypes.func,
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  fetchShowplaces: fetchShowplace(dispatch),
-});
 
-const mapStateToProps = ({ showplacesList: { showplaces, lang } }) => ({
-  showplaces,
-  lang,
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Search);
+export default Search;

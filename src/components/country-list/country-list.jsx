@@ -36,12 +36,10 @@ const CountryList = (props) => {
                       }
                     }}
                     type="button">{i}</button>
-                  ))}
+                ))}
                 </div>
                 <div className = "rating-marks-wrapper">
-                  {rate.map((mark) => (
-                    <span>{`${mark.user}: ${mark.rating}`}</span>
-          ))}
+                  {rate.map(({_id: id$, user, rating}) => <span key={id$}>{`${user}: ${rating}`}</span>)}
                 </div>
                 <div><em>{description[lang]}</em></div>
               </li>

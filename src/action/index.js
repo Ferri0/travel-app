@@ -60,6 +60,11 @@ const setLanguage = (value) => ({
   payload: value,
 });
 
+const searchCountries = (countries) => ({
+  type: 'SEARCH_COUNTRIES',
+  payload: countries,
+});
+
 const fetchShowplace = (dispatch) => async (showplaceService) => {
   dispatch(showplaceRequested());
   try {
@@ -98,4 +103,5 @@ export {
   setAuthorized,
   setCurrentUser,
   setLanguage,
+  searchCountries,
 };
