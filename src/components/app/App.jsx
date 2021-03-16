@@ -1,7 +1,6 @@
 import React from 'react';
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import { MainPage, CountryPage } from '../pages';
-// import AuthPage from '../auth-page';
 
 function App() {
   return (
