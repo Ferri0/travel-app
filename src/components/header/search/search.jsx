@@ -29,6 +29,13 @@ function Search({ parrent }) {
         country.name_lang[lang].toLowerCase().includes(value.toLowerCase())
         || country.capital[lang].toLowerCase().includes(value.toLowerCase())
       ));
+
+      if (showplacesFilterList.length === 0) {
+        inputRef.current.style.border = '2px solid #fc0303';
+        return;
+      }
+
+      inputRef.current.style = '';
       dispatch(searchCountries(showplacesFilterList));
     };
   };

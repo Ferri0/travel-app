@@ -19,14 +19,9 @@ function generateMainImgs(data, cls) {
   ));
 }
 
-function changeClasses(ind, cls) {
-  const arr = [...cls];
-  arr.forEach((item, i) => {
-    if (i === ind) arr[i] = 'active';
-    else arr[i] = 'no-active';
-  });
-  return arr;
-}
+const changeClasses = (ind, cls) => (
+  [...cls].map((item, i) => i === ind ? 'active' : 'no-active')
+);
 
 function generateSliderData(arr, lang) {
   return arr.map((country) => ({
