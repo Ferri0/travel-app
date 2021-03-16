@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import {ShowplaceService} from '../../services';
-import {setShowAuth} from '../../action';
+import {setShowAuth, fetchShowplace} from '../../action';
 import { Widgets } from '../widgets'
 
 import './country-list.scss';
@@ -10,7 +10,7 @@ import './country-list.scss';
 const showplaceService = new ShowplaceService;
 
 const CountryList = (props) => {
-  const { currentUser, currentCounrty, lang, setShowAuthAction } = props;
+  const { currentUser, currentCounrty, lang, setShowAuthAction, fetchShowplaceAction } = props;
   const { name_lang: title, attraction, img: catipalImg  } = currentCounrty;
   const { _id } = currentCounrty;
   
@@ -30,7 +30,8 @@ const CountryList = (props) => {
                     <button key = {`${_id}${i}`}
                     onClick = {() => {
                       if (currentUser) {
-                      showplaceService.rate(_id, index, currentUser, i);
+                      showplaceService.rate(_id, index, currentUser, i).then(() => 
+                        fetchShowplaceAction(showplaceService));
                       } else {
                         setShowAuthAction(true);
                       }
@@ -70,6 +71,7 @@ const mapStateToProps = ({
 
 const mapDispatchToProps = (dispatch) => ({
   setShowAuthAction: (value) => dispatch(setShowAuth(value)), // [1]
+  fetchShowplaceAction: fetchShowplace(dispatch)
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CountryList);
