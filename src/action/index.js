@@ -69,7 +69,8 @@ const fetchShowplace = (dispatch) => async (showplaceService) => {
   dispatch(showplaceRequested());
   try {
     const data = await showplaceService.getAllCountries();
-    await dispatch(showplaceLoaded(data))
+    // (data[3].attraction);
+    await dispatch(showplaceLoaded(data));
   } catch (error) {
     dispatch(showplaceFetchError(error))
   }

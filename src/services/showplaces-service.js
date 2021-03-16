@@ -19,6 +19,7 @@ class ShowplaceService {
 
   getAllCountries = async () => {
     const countries = await this.getResource(this.apiCountryBase);
+    // console.log(countries);
     return countries;
   };
 
