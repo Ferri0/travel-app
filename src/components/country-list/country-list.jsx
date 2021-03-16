@@ -2,16 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import ReactPlayer from 'react-player';
-import { ShowplaceService } from '../../services';
 import { setShowAuth } from '../../action';
 import { Widgets } from '../widgets';
 import { Gallery } from './gallery';
 import style from './country-list.module.scss';
 
-const showplaceService = new ShowplaceService();
-
 const CountryList = (props) => {
-  const { currentUser, currentCounrty, lang, setShowAuthAction } = props;
+  const { currentCounrty, lang,  } = props;
   const {
     name_lang: title,
     attraction,
@@ -20,7 +17,6 @@ const CountryList = (props) => {
     description: countryDesc,
     video,
   } = currentCounrty;
-  const { _id } = currentCounrty;
   const capitalTxt = {
     ua: 'Столиця',
     en: 'Capital',
@@ -95,12 +91,6 @@ const CountryList = (props) => {
 CountryList.propTypes = {
   currentCounrty: PropTypes.objectOf(PropTypes.any).isRequired,
   lang: PropTypes.string.isRequired,
-  currentUser: PropTypes.string,
-  setShowAuthAction: PropTypes.func.isRequired,
-};
-
-CountryList.defaultProps = {
-  currentUser: null,
 };
 
 const mapStateToProps = ({ showplacesList: { currentUser } }) => ({
@@ -109,6 +99,7 @@ const mapStateToProps = ({ showplacesList: { currentUser } }) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   setShowAuthAction: (value) => dispatch(setShowAuth(value)), // [1]
+  fetchShowplaceAction: fetchShowplace(dispatch)
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CountryList);
