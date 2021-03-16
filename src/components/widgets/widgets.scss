@@ -1,35 +1,37 @@
 .widgets {
   display: inline-flex;
   flex-direction: column;
-  background-color: #fcfdfd;
-  border-radius: 9px;
+  justify-content: center;
   padding: 25px;
   padding-right: 30px;
-  box-shadow: 0px 31px 35px -26px #080c21;
+  background-color: #fcfdfd;
   background-image: linear-gradient(45deg, #008fd3, transparent);
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  box-shadow: 0px 31px 35px -26px #080c21;
 }
 
 .date {
-  font-size: 14px;
+  color: rgba(0, 0, 0, 0.5);
   font-weight: bold;
-  color: rgba(0,0,0,0.5);
+  font-size: 14px;
 }
 
 .city {
-  font-size: 21px;
-  font-weight: bold;
-  text-transform: uppercase;
   padding-top: 5px;
-  color: rgba(0,0,0,0.7);
+  color: rgba(0, 0, 0, 0.7);
+  font-weight: bold;
+  font-size: 21px;
+  text-transform: uppercase;
 }
 
 .temp {
   display: flex;
   align-items: center;
-  padding-top: 10px;
-  color: rgba(0,0,0,0.9);
-  font-weight: 100;
   justify-content: center;
+  padding-top: 10px;
+  color: rgba(0, 0, 0, 0.9);
+  font-weight: 100;
 }
 
 .degrees {
@@ -46,17 +48,17 @@
 }
 
 .widget__date {
-  font-size: 18px;
-  font-weight: bold;
-  text-transform: uppercase;
   padding-top: 5px;
   color: rgba(0, 0, 0, 0.7);
+  font-weight: bold;
+  font-size: 18px;
+  text-transform: uppercase;
 }
 
 .widget__time {
   display: block;
-  text-align: center;
   font-size: 35px;
+  text-align: center;
 }
 
 .widget-date-point {
@@ -65,8 +67,8 @@
 
 .widget-currency-point {
   font-size: 25px;
-  text-align: center;
   font-family: monospace, Geneva, Tahoma, sans-serif;
+  text-align: center;
 }
 
 .currency__paragraph {
