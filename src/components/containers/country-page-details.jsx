@@ -2,7 +2,6 @@ import React, { useEffect, useContext } from 'react';
 import { connect } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
-
 import { Context } from '../showplace-service-context';
 import { fetchShowplace } from '../../action';
 import { CountryList } from '../country-list';

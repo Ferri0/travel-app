@@ -132,5 +132,7 @@ function AuthPage(props) {
   AuthPage.propTypes = {
     setShowAuthAction: PropTypes.func.isRequired,
     isShowAuth: PropTypes.bool.isRequired,
-    lang: PropTypes.string.isRequired
+    lang: PropTypes.string.isRequired,
+    setAuthorizedAction: PropTypes.func.isRequired,
+    setCurrentUserAction: PropTypes.func.isRequired
   }
