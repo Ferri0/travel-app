@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactPlayer from 'react-player';
-import { setShowAuth } from '../../action';
 import { Widgets } from '../widgets';
 import { Gallery } from './gallery';
 import style from './country-list.module.scss';
@@ -56,13 +55,4 @@ CountryList.propTypes = {
   lang: PropTypes.string.isRequired,
 };
 
-const mapStateToProps = ({ showplacesList: { currentUser } }) => ({
-  currentUser,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  setShowAuthAction: (value) => dispatch(setShowAuth(value)), // [1]
-  fetchShowplaceAction: fetchShowplace(dispatch)
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(CountryList);
+export default CountryList;
