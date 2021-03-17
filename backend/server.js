@@ -39,9 +39,11 @@ app.post('/api/register', async (req, res) => {
   let result = "ok"
   if (currentUser) {
     result = "userExists"   
-  } else {
+  } else if (req.body.name.length < 4) {
+      result = "nameIsTooShort"
+    } else {
     Users.create({name:req.body.name, pass: req.body.pass});
-  }
+    }
   res.send(result);
 });
 

@@ -62,6 +62,11 @@ const errorText = {
     en:'User exists',
     ru:'Пользователь уже существует',
     ua:'Користувач вже існує'
+  },
+  nameIsTooShort:{
+    en:'User name is too short',
+    ru:'Имя пользователя слишком короткое',
+    ua:"Ім'я користувача занадто коротке"
   }
 }
 
