@@ -8,3 +8,15 @@
 .langSelect option:checked {
   font-weight: 600;
 }
+
+@media (max-width: 739px) {
+  .langSelect {
+    width: 150px;
+  }
+}
+
+@media (max-width: 430px) {
+  .langSelect {
+    width: 120px;
+  }
+}

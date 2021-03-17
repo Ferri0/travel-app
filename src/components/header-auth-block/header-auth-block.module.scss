@@ -2,8 +2,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 30%;
-  height: 100%;
+  // width: 30%;
+  // height: 100%;
 }
 
 .headerAuthBlockText {
@@ -20,4 +20,19 @@
   border: 0;
   border-radius: 5px;
   outline: none;
+}
+
+@media (max-width: 739px) {
+  .headerAuthBlockWrapper {
+    justify-self: end;
+    // padding-right: 50px;
+  }
+}
+
+@media (max-width: 480px) {
+  .headerAuthBlockWrapper {
+    justify-self: start;
+    // padding-right: 0;
+    // padding-left: 50px;
+  }
 }

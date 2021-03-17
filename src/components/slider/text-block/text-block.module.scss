@@ -45,13 +45,14 @@ $title-size: 90px;
 .textBlock {
   position: relative;
   overflow-y: hidden;
-  @include size(auto, $title-size);
+  @include size(auto, 110px);
 }
 
 .text {
   color: #fff;
   font-weight: 500;
-  @include size(auto, $title-size);
+  transition: opacity 1s ease;
+  @include size(auto, 110px);
 }
 
 @media (max-width: 959px) {
@@ -66,13 +67,13 @@ $title-size: 90px;
     @include size(auto, $title-size);
   }
 
-  .textBlock {
-    @include size(auto, $title-size);
-  }
+  // .textBlock {
+  //   @include size(auto, $title-size);
+  // }
 
-  .text {
-    @include size(auto, $title-size);
-  }
+  // .text {
+  //   @include size(auto, $title-size);
+  // }
 }
 
 @media (max-width: 869px) {
@@ -87,13 +88,13 @@ $title-size: 90px;
     @include size(auto, $title-size);
   }
 
-  .textBlock {
-    @include size(auto, $title-size);
-  }
+  // .textBlock {
+  //   @include size(auto, $title-size);
+  // }
 
-  .text {
-    @include size(auto, $title-size);
-  }
+  // .text {
+  //   @include size(auto, $title-size);
+  // }
 }
 
 @media (max-width: 449px) {
@@ -108,13 +109,13 @@ $title-size: 90px;
     @include size(auto, $title-size);
   }
 
-  .textBlock {
-    @include size(auto, $title-size);
-  }
+  // .textBlock {
+  //   @include size(auto, $title-size);
+  // }
 
-  .text {
-    @include size(auto, $title-size);
-  }
+  // .text {
+  //   @include size(auto, $title-size);
+  // }
 }
 
 @media (max-width: 399px) {
@@ -129,11 +130,11 @@ $title-size: 90px;
     @include size(auto, $title-size);
   }
 
-  .textBlock {
-    @include size(auto, $title-size);
-  }
+  // .textBlock {
+  //   @include size(auto, $title-size);
+  // }
 
-  .text {
-    @include size(auto, $title-size);
-  }
+  // .text {
+  //   @include size(auto, $title-size);
+  // }
 }

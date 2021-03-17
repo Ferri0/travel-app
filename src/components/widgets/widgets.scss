@@ -100,3 +100,35 @@
 .currency__flag {
   display: inline;
 }
+
+@media (max-width: 670px) {
+  .date {
+    font-size: 14px;
+  }
+
+  .city {
+    font-size: 14px;
+  }
+
+  .degrees {
+    font-size: 20px;
+  }
+
+  .widget__date {
+    font-size: 14px;
+  }
+
+  .widget__time {
+    font-size: 20px;
+  }
+
+  .currency__flag {
+    padding-inline-start: 10px !important;
+  }
+}
+
+@media (max-width: 670px) {
+  .widgets {
+    padding: 20px 5px;
+  }
+}

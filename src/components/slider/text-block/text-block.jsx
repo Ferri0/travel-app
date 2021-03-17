@@ -6,6 +6,9 @@ function TextBlock({ data, ind, slideClasses }) {
   const moveTitleRef = useRef(null);
   const [blockHeight, setHeight] = useState(0);
 
+  const moveTextRef = useRef(null);
+  const [blockTextHeight, setTextHeight] = useState(0);
+
   function generateItems(arr, name, cls) {
     return arr.map((item, i) => (
       <div
@@ -21,7 +24,10 @@ function TextBlock({ data, ind, slideClasses }) {
     if (moveTitleRef.current) {
       setHeight(moveTitleRef.current.offsetHeight);
     }
-  }, [moveTitleRef]);
+    if (moveTextRef.current) {
+      setTextHeight(moveTextRef.current.offsetHeight);
+    }
+  }, [moveTitleRef, moveTextRef]);
 
   return (
     <div className={style.sliderTextBlock}>
@@ -30,8 +36,11 @@ function TextBlock({ data, ind, slideClasses }) {
           {generateItems(data, 'title', slideClasses)}
         </div>
       </div>
-      <div className={style.textBlock}>
-        <div className={style.mover} style={{ top: `${ind * -blockHeight}px` }}>
+      <div className={style.textBlock} ref={moveTextRef}>
+        <div
+          className={style.mover}
+          style={{ top: `${ind * -blockTextHeight}px` }}
+        >
           {generateItems(data, 'text', slideClasses)}
         </div>
       </div>
