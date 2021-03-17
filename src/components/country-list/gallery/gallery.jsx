@@ -82,6 +82,7 @@ function Gallery({ attraction, lang, currentCounrty }) {
           rate={attraction[activeId].rate}
           index={activeId}
           currentCounrty={currentCounrty}
+          lang={lang}
         />
       </div>
       <div className={style.attrNav}>
