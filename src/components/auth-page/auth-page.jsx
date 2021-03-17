@@ -53,12 +53,19 @@ const errorText = {
     ru: 'Что-то пошло не так',
     ua: 'Щось пішло не так',
   },
-  userExists: {
-    en: 'User exists',
-    ru: 'Пользователь уже существует',
-    ua: 'Користувач вже існує',
+  userExists:{
+    en:'User exists',
+    ru:'Пользователь уже существует',
+    ua:'Користувач вже існує'
   },
-};
+  nameIsTooShort:{
+    en:'User name is too short',
+    ru:'Имя пользователя слишком короткое',
+    ua:"Ім'я користувача занадто коротке"
+  }
+}
+
+
 
 function AuthPage(props) {
   const {
@@ -72,27 +79,32 @@ function AuthPage(props) {
   const [password, setPassword] = useState('');
   const [errorType, setErrorType] = useState('ok');
 
-  function loginHandler(user, pass) {
-    showplaceService.login(user, pass).then((res) => {
-      if (res === 'ok') {
-        setCurrentUserAction(user);
-        setAuthorizedAction(true);
-        setShowAuthAction(false);
-      }
-      setErrorType(res);
-    });
-  }
+    
+    function loginHandler(user, pass) {
+      showplaceService.login(user, pass).then(res => {
+        if (res === 'ok') {
+          setCurrentUserAction(user);
+          localStorage.setItem('travel-app-current-user', user);
+          localStorage.setItem('travel-app-isAuth', true);
+          setAuthorizedAction(true);
+          setShowAuthAction(false)
+        } 
+        setErrorType(res);
+      });
+    }
 
-  function registerHandler(user, pass) {
-    showplaceService.register(user, pass).then((res) => {
-      if (res === 'ok') {
-        setCurrentUserAction(user);
-        setAuthorizedAction(true);
-        setShowAuthAction(false);
-      }
-      setErrorType(res);
-    });
-  }
+    function registerHandler(user, pass) {
+      showplaceService.register(user, pass).then(res => {
+        if (res === 'ok') {
+          setCurrentUserAction(user);
+          localStorage.setItem('travel-app-current-user', user);
+          localStorage.setItem('travel-app-isAuth', true);
+          setAuthorizedAction(true);
+          setShowAuthAction(false)
+        } 
+        setErrorType(res);
+      });
+    }
 
   return (
     <div

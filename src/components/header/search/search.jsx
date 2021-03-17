@@ -23,7 +23,7 @@ function Search({ parrent }) {
   
   const handleSearch = (event) => {
     const { key, type } = event;
-    if (key === 'Enter' || type === 'click') {
+    if (key === 'Enter' || type === 'click' || type === 'change') {
       const { value } = inputRef.current;
       const showplacesFilterList = copyShoplaces.filter((country) => (
         country.name_lang[lang].toLowerCase().includes(value.toLowerCase())
@@ -53,6 +53,7 @@ function Search({ parrent }) {
         className={style.searchInput}
         placeholder={placeholder[lang]}
         onKeyUp={(e) => handleSearch(e)}
+        onChange={(e) => handleSearch(e)}
         results={0}
       />
       <button type="button"
