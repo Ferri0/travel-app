@@ -11,25 +11,23 @@ const updateTime = (UTC) => {
 };
 
 const TimeWidget = ({ lang, UTC }) => {
+  let language = lang;
+  if (language === 'ua') language = 'uk';
   const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-  const dateFormatter = new Intl.DateTimeFormat(lang, dateOptions);
+  const dateFormatter = new Intl.DateTimeFormat(language, dateOptions);
 
   const timeFormatter = useMemo(() => {
     const timeOptions = { hour: "numeric", minute: "numeric", second: "numeric" };
-    return new Intl.DateTimeFormat(lang, timeOptions)
-  }, [lang]);
+    return new Intl.DateTimeFormat(language, timeOptions)
+  }, [language]);
   
   const [time, setTime] = useState(timeFormatter.format(updateTime(UTC)));
   
-  useEffect(() => {
-    const timerId = setTimeout(() => {
-      setTime(timeFormatter.format(updateTime(UTC)));
-    }, 1000);
-    
-    return () => {
-      clearTimeout(timerId);
-    }
-  }, [UTC, timeFormatter])
+  const timerId = setTimeout(() => {
+    setTime(timeFormatter.format(updateTime(UTC)));
+  }, 1000);
+
+  useEffect(() => () => clearTimeout(timerId), [UTC, timeFormatter, timerId])
 
 
   return (
