@@ -23,11 +23,16 @@ const TimeWidget = ({ lang, UTC }) => {
   
   const [time, setTime] = useState(timeFormatter.format(updateTime(UTC)));
   
-  const timerId = setTimeout(() => {
-    setTime(timeFormatter.format(updateTime(UTC)));
-  }, 1000);
+  
+  useEffect(() => {
+    const timerId = setTimeout(() => {
+      setTime(timeFormatter.format(updateTime(UTC)));
+    }, 1000);
+    return () => {
+      clearTimeout(timerId)
+    }
+  }, [UTC, timeFormatter, time])
 
-  useEffect(() => () => clearTimeout(timerId), [UTC, timeFormatter, timerId])
 
 
   return (
