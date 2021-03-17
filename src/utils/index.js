@@ -1,7 +1,7 @@
 import {
-  compose
+  cache
 } from "./compose";
 
 export {
-  compose
+  cache
 };

@@ -5,6 +5,8 @@
   "main": "backend/server.js",
   "private": "true",
   "scripts": {
+    "start": "node backend/server.js",
+    "build": "webpack --mode production",
     "prettier": "prettier --check .",
     "prettier:fix": "prettier --write .",
     "eslint": "eslint **/*.js",
@@ -13,7 +15,6 @@
     "stylelint:fix": "stylelint **/*{.css,.scss} --fix",
     "build:dev": "webpack --mode development",
     "build:watch": "webpack --watch --mode development",
-    "build:prod": "webpack --mode production",
     "open:dev": "webpack serve --mode development",
     "open:prod": "webpack serve --mode production",
     "node": "concurrently \"npm run build:watch\" \"nodemon\""
