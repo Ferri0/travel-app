@@ -1,0 +1,85 @@
+@import '../../scss/abstracts.scss';
+
+.ratingWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.ratingButtonWrapper {
+  display: flex;
+  min-width: 100px;
+  min-height: 25px;
+  margin-top: 5px;
+}
+
+.ratingTitle {
+  font-weight: 600;
+}
+
+.ratingMarksWrapper {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+  transform: translate(-50%, -50%);
+  @include size(100vw, 100vh);
+}
+
+.ratingMarksWrapper.hidden {
+  display: none;
+}
+
+.ratingMarksContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  max-height: 500px;
+  padding: 20px 40px;
+  overflow-y: auto;
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+.ratingButton {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  color: #903d02;
+  font-weight: 600;
+  background: url('../../assets/images/star.svg');
+  background-size: cover;
+  border: 0;
+  outline: none;
+  @include size(30px, 30px);
+}
+
+.closeButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  color: #8a8a8a;
+  background: none;
+  border: 2px solid #8a8a8a;
+  border-radius: 50px;
+  outline: none;
+}
+
+.closeButton:hover {
+  color: rgb(74, 74, 75);
+  border: 2px solid rgb(74, 74, 75);
+}
