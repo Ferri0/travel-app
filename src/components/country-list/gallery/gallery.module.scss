@@ -155,3 +155,31 @@
   padding: 5px 20px;
   background: #fff;
 }
+
+@media (max-width: 865px) {
+  .attrImg {
+    align-items: flex-start;
+  }
+
+  .attrDesc {
+    padding-top: 50px;
+  }
+}
+
+@media (max-width: 749px) {
+  .attrMover .image {
+    min-width: 70px;
+  }
+
+  .attrMover .image.active {
+    height: 110px;
+  }
+
+  .attrMover .image.no-active {
+    height: 90px;
+  }
+
+  .attrDesc {
+    font-size: 14px;
+  }
+}
