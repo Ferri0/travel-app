@@ -56,6 +56,7 @@ function Gallery({ attraction, lang, currentCounrty }) {
     <div className={style.galleryWrapper}>
       <div className={style.attrImg}>
         {getAttrImgs(attraction, classes)}
+        <div className={style.attrImgOverlay} />
         <div className={style.pagination}>
           <button
             type="button"
