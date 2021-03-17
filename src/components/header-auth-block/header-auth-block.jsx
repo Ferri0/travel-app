@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { setShowAuth, setCurrentUser, setAuthorized } from '../../action';
@@ -24,7 +24,17 @@ const welcomeText = {
 
 function HeaderAuthBlock(props) {
     const { lang, isAuthorized, currentUser, setShowAuthAction, setAuthorizedAction, setCurrentUserAction } = props;
-    if (!isAuthorized) {
+
+    useEffect(() => {
+        if (localStorage.getItem('travel-app-current-user')) {
+          setCurrentUserAction(localStorage.getItem('travel-app-current-user'));
+        }
+        if (localStorage.getItem('travel-app-isAuth')) {
+            setAuthorizedAction(localStorage.getItem('travel-app-isAuth'));
+          }
+      });
+      
+    if (isAuthorized === "false") {
         return (
             <div className = {style.headerAuthBlockWrapper}>
               <button type="button"
@@ -32,20 +42,23 @@ function HeaderAuthBlock(props) {
               onClick = {() => setShowAuthAction(true)}>{authorizeText[lang]}</button>
             </div>
         );
-    } else {
+    } 
         return (
             <div className = {style.headerAuthBlockWrapper}>
                 <span className = {style.headerAuthBlockText}>{welcomeText[lang]}, {currentUser}</span>
               <button type="button"
               className = {style.headerAuthBlockButton}
               onClick = {() => {
+                localStorage.setItem('travel-app-current-user', null);
+                localStorage.setItem('travel-app-isAuth', false)
                   setAuthorizedAction(false);
                   setCurrentUserAction(null);
+                  ;
               }
                 }>{exitText[lang]}</button>
             </div>
         );
-    }
+    
 
 }
 

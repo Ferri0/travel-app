@@ -78,10 +78,13 @@ function AuthPage(props) {
     const [password, setPassword] = useState(''); 
     const [errorType, setErrorType] = useState('ok');
 
+    
     function loginHandler(user, pass) {
       showplaceService.login(user, pass).then(res => {
         if (res === 'ok') {
           setCurrentUserAction(user);
+          localStorage.setItem('travel-app-current-user', user);
+          localStorage.setItem('travel-app-isAuth', true);
           setAuthorizedAction(true);
           setShowAuthAction(false)
         } 
@@ -93,6 +96,8 @@ function AuthPage(props) {
       showplaceService.register(user, pass).then(res => {
         if (res === 'ok') {
           setCurrentUserAction(user);
+          localStorage.setItem('travel-app-current-user', user);
+          localStorage.setItem('travel-app-isAuth', true);
           setAuthorizedAction(true);
           setShowAuthAction(false)
         } 
