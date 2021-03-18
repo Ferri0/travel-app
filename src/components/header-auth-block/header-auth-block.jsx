@@ -27,14 +27,14 @@ function HeaderAuthBlock(props) {
 
     useEffect(() => {
         if (localStorage.getItem('travel-app-current-user')) {
-          setCurrentUserAction(localStorage.getItem('travel-app-current-user'));
+          setCurrentUserAction(JSON.parse(localStorage.getItem('travel-app-current-user')));
         }
         if (localStorage.getItem('travel-app-isAuth')) {
-            setAuthorizedAction(localStorage.getItem('travel-app-isAuth'));
+            setAuthorizedAction(JSON.parse(localStorage.getItem('travel-app-isAuth')));
           }
       });
       
-    if (isAuthorized === "false") {
+    if (!isAuthorized) {
         return (
             <div className = {style.headerAuthBlockWrapper}>
               <button type="button"
@@ -49,8 +49,8 @@ function HeaderAuthBlock(props) {
               <button type="button"
               className = {style.headerAuthBlockButton}
               onClick = {() => {
-                localStorage.setItem('travel-app-current-user', null);
-                localStorage.setItem('travel-app-isAuth', false)
+                localStorage.setItem('travel-app-current-user', JSON.stringify(null));
+                localStorage.setItem('travel-app-isAuth', JSON.stringify(false))
                   setAuthorizedAction(false);
                   setCurrentUserAction(null);
                   ;

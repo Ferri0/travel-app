@@ -84,8 +84,8 @@ function AuthPage(props) {
       showplaceService.login(user, pass).then(res => {
         if (res === 'ok') {
           setCurrentUserAction(user);
-          localStorage.setItem('travel-app-current-user', user);
-          localStorage.setItem('travel-app-isAuth', true);
+          localStorage.setItem('travel-app-current-user', JSON.stringify(user));
+          localStorage.setItem('travel-app-isAuth', JSON.stringify(true));
           setAuthorizedAction(true);
           setShowAuthAction(false)
         } 
@@ -97,8 +97,8 @@ function AuthPage(props) {
       showplaceService.register(user, pass).then(res => {
         if (res === 'ok') {
           setCurrentUserAction(user);
-          localStorage.setItem('travel-app-current-user', user);
-          localStorage.setItem('travel-app-isAuth', true);
+          localStorage.setItem('travel-app-current-user', JSON.stringify(user));
+          localStorage.setItem('travel-app-isAuth', JSON.stringify(true));
           setAuthorizedAction(true);
           setShowAuthAction(false)
         } 
