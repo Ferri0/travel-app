@@ -125,10 +125,35 @@
   .currency__flag {
     padding-inline-start: 10px !important;
   }
-}
 
-@media (max-width: 670px) {
   .widgets {
     padding: 20px 5px;
+  }
+}
+
+@media (max-width: 610px) {
+  .widgets {
+    flex-direction: row;
+    height: 140px;
+    padding: 20px;
+    padding-bottom: 0;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 0;
+  }
+
+  .widget-weather-point,
+  .widget-date-point,
+  .widget-currency-point {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5px;
+  }
+
+  .widget-currency-point {
+    margin-bottom: 20px;
+    border-right: 1px dashed #fff;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
   }
 }

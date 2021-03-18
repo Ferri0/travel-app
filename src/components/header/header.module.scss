@@ -4,7 +4,7 @@
   position: absolute;
   top: 0;
   left: 50%;
-  z-index: 2;
+  z-index: 3;
   display: flex;
   justify-content: space-between;
   padding: 10px 20px;
@@ -23,32 +23,37 @@
   cursor: pointer;
 }
 
+.menu.close,
+.menu.open {
+  display: flex;
+  justify-content: space-between;
+  width: calc(100% - 250px);
+}
+
 @media (max-width: 739px) {
-  .header {
-    display: grid;
-    grid-gap: 5px;
-    grid-template-columns: 1fr 1fr;
-    height: 80px;
+  .menu.close {
+    display: none;
   }
 
-  .logo {
-    // width: 60px;
-    // background: url('../../assets/images/logo-sm.png') no-repeat center;
-    justify-self: end;
-    // padding-right: 180px;
+  .menu.open {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 225px;
+    padding: 50px 30px;
+    padding-right: 0;
+    background: linear-gradient(180deg, #91b6c5 0%, #265187 100%);
+    border-bottom: 1.5px dashed #fff;
+    border-left: 1.5px dashed #fff;
+    border-bottom-left-radius: 10px;
+    box-shadow: 0px 2px 9px 1px #003b5d;
   }
-}
 
-@media (max-width: 480px) {
-  .logo {
-    justify-self: start;
-    // padding-right: 0;
-  }
-}
-
-@media (max-width: 410px) {
-  .logo {
-    width: 60px;
-    background: url('../../assets/images/logo-sm.png') no-repeat center;
+  .menu.open * {
+    margin-bottom: 10px;
   }
 }

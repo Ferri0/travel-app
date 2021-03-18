@@ -13,11 +13,13 @@ const CurrnecyWidget = ({
   return (
     <div className="widget-currency-point">
       <p className="currency__paragraph">{currencyInfo.text[lang]}</p>
-      <span>{`1$ = ${value}`}</span>
-      <span>{currencySymbol}</span>
-      <ul className="f32 currency__flag">
-        <li className={clazz} />
-      </ul>
+      <div>
+        <span>{`1$ = ${value}`}</span>
+        <span>{currencySymbol}</span>
+        <ul className="f32 currency__flag">
+          <li className={clazz} />
+        </ul>
+      </div>
     </div>
   );
 };

@@ -66,14 +66,6 @@ $title-size: 90px;
     font-size: $title-size;
     @include size(auto, $title-size);
   }
-
-  // .textBlock {
-  //   @include size(auto, $title-size);
-  // }
-
-  // .text {
-  //   @include size(auto, $title-size);
-  // }
 }
 
 @media (max-width: 869px) {
@@ -87,14 +79,6 @@ $title-size: 90px;
     font-size: $title-size;
     @include size(auto, $title-size);
   }
-
-  // .textBlock {
-  //   @include size(auto, $title-size);
-  // }
-
-  // .text {
-  //   @include size(auto, $title-size);
-  // }
 }
 
 @media (max-width: 449px) {
@@ -108,14 +92,6 @@ $title-size: 90px;
     font-size: $title-size;
     @include size(auto, $title-size);
   }
-
-  // .textBlock {
-  //   @include size(auto, $title-size);
-  // }
-
-  // .text {
-  //   @include size(auto, $title-size);
-  // }
 }
 
 @media (max-width: 399px) {
@@ -130,11 +106,7 @@ $title-size: 90px;
     @include size(auto, $title-size);
   }
 
-  // .textBlock {
-  //   @include size(auto, $title-size);
-  // }
-
-  // .text {
-  //   @include size(auto, $title-size);
-  // }
+  .text {
+    font-size: 14px;
+  }
 }

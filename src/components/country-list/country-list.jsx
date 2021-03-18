@@ -6,7 +6,7 @@ import { Gallery } from './gallery';
 import style from './country-list.module.scss';
 
 const CountryList = (props) => {
-  const { currentCounrty, lang,  } = props;
+  const { currentCounrty, lang } = props;
   const {
     name_lang: title,
     attraction,
@@ -38,8 +38,10 @@ const CountryList = (props) => {
           <Widgets />
         </div>
       </div>
-      <div className={style.video}>
-        <ReactPlayer url={video} />
+      <div className={style.videoWrapper}>
+        <div className={style.video}>
+          <ReactPlayer url={video} controls width="100%" height="100%" />
+        </div>
       </div>
       <Gallery
         attraction={attraction}

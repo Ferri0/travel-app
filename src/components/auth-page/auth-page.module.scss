@@ -69,9 +69,8 @@
   outline: none;
 }
 
-.authPageText {
-  color: #00f;
-  font-size: 14px;
+.authPageButton:hover {
+  box-shadow: 0 1px 3px 1px #616161;
 }
 
 .closeButton {
@@ -93,4 +92,5 @@
 .closeButton:hover {
   color: rgb(74, 74, 75);
   border: 2px solid rgb(74, 74, 75);
+  box-shadow: none;
 }
