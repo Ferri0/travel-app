@@ -2,6 +2,7 @@
 
 .vcontrol {
   position: relative;
+  z-index: 3;
   display: flex;
   flex-direction: column;
   grid-area: vcontrol;
